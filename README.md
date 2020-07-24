@@ -10,9 +10,10 @@ Overview: matStats is a mobile app to aid in the training habits of brazilian ji
     * Once a technique is logged in the system it will be available to all users
     * Techniques will be sorted into types: submission, sweep, escape, takedown, guard, general position, other
     * The user can delete their history with a technique, but cannot remove it from the database
-* Display user training details in meaningful ways using the Victory chart library
 
 # Stretch Goals:
+
+* Display user training details in meaningful ways using the Victory chart library
 * Increase the number of ways that data is displayed in the stats section
 * Add ability to have a ‘stable’ of techniques that have been performed successfully or prioritized in the past
 * Allow users to add profile photos 
@@ -20,7 +21,6 @@ Overview: matStats is a mobile app to aid in the training habits of brazilian ji
 * Allow users to follow each other
     * Messaging between users
 * Allow users to tag each other in training sessions
-* Allow users to map out the flow of their game using a mind map
 
 # User Stories:
 * As a grappler, in order to track my training, I’d like to keep a log of my training sessions
@@ -46,4 +46,3 @@ Overview: matStats is a mobile app to aid in the training habits of brazilian ji
 * Reactstrap
 * Cloudinary
 * Pixabay
-* Mind Meister
