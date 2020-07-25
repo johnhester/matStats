@@ -1,0 +1,55 @@
+{
+    "users": [],
+    "sessions": [],
+    "sessionTypes": [
+        {
+            "id": 1,
+            "type": "drilling"
+        },
+        {
+            "id": 2,
+            "type": "sparring"
+        },
+        {
+            "id": 3,
+            "type": "both"
+        }
+    ],
+    "techniques": [],
+    "techniqueTypes":[
+        {
+            "id": 1,
+            "type": "submission"
+        },
+        {
+            "id": 2,
+            "type": "sweep"
+        },
+        {
+            "id": 3,
+            "type": "escape"
+        },
+        {
+            "id": 4,
+            "type": "takedown"
+        },
+        {
+            "id": 5,
+            "type": "guard"
+        },
+        {
+            "id": 6,
+            "type": "pass"
+        },
+        {
+            "id": 7,
+            "type": "general position"
+        },
+        {
+            "id": 8,
+            "type": "other"
+        }
+    ],
+    "techniqueHistory":[],
+    "techniqueHit":[]
+}
