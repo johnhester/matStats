@@ -1,80 +1,92 @@
 {
-    "users": [
-        {
-            "id": 1,
-            "username": "whiteBeltBaller",
-            "email": "hellohaha@gmail.com",
-            "password": "asdf"
-        },
-        {
-            "id": 2,
-            "username": "john",
-            "email": "lalala@gmail.com",
-            "password": "asdf"
-        },
-        {
-            "id": 3,
-            "username": "armSnatcher",
-            "email": "armbar@hotspot.net",
-            "password": "asdf"
-        },
-        {
-            "id": 4,
-            "username": "bbBlackbelt",
-            "email": "hellohaha@gmail.com",
-            "password": "asdf"
-        }
-    ],
-    "sessions": [],
-    "sessionTypes": [
-        {
-            "id": 1,
-            "type": "drilling"
-        },
-        {
-            "id": 2,
-            "type": "sparring"
-        },
-        {
-            "id": 3,
-            "type": "both"
-        }
-    ],
-    "techniques": [],
-    "techniqueTypes":[
-        {
-            "id": 1,
-            "type": "submission"
-        },
-        {
-            "id": 2,
-            "type": "sweep"
-        },
-        {
-            "id": 3,
-            "type": "escape"
-        },
-        {
-            "id": 4,
-            "type": "takedown"
-        },
-        {
-            "id": 5,
-            "type": "guard"
-        },
-        {
-            "id": 6,
-            "type": "pass"
-        },
-        {
-            "id": 7,
-            "type": "general position"
-        },
-        {
-            "id": 8,
-            "type": "other"
-        }
-    ],
-    "techniqueHistory":[],
-    "techniqueHit":[]
+  "users": [
+    {
+      "id": 1,
+      "username": "whiteBeltBaller",
+      "email": "hellohaha@gmail.com",
+      "password": "asdf"
+    },
+    {
+      "id": 2,
+      "username": "john",
+      "email": "lalala@gmail.com",
+      "password": "asdf"
+    },
+    {
+      "id": 3,
+      "username": "armSnatcher",
+      "email": "armbar@hotspot.net",
+      "password": "asdf"
+    },
+    {
+      "id": 4,
+      "username": "bbBlackbelt",
+      "email": "hellohaha@gmail.com",
+      "password": "asdf"
+    },
+    {
+      "username": "bobDan",
+      "email": "help@gmail.com",
+      "password": "asdf",
+      "id": 5
+    },
+    {
+      "username": "gary",
+      "email": "email@domain.com",
+      "password": "asdf",
+      "id": 6
+    }
+  ],
+  "sessions": [],
+  "sessionTypes": [
+    {
+      "id": 1,
+      "type": "drilling"
+    },
+    {
+      "id": 2,
+      "type": "sparring"
+    },
+    {
+      "id": 3,
+      "type": "both"
+    }
+  ],
+  "techniques": [],
+  "techniqueTypes": [
+    {
+      "id": 1,
+      "type": "submission"
+    },
+    {
+      "id": 2,
+      "type": "sweep"
+    },
+    {
+      "id": 3,
+      "type": "escape"
+    },
+    {
+      "id": 4,
+      "type": "takedown"
+    },
+    {
+      "id": 5,
+      "type": "guard"
+    },
+    {
+      "id": 6,
+      "type": "pass"
+    },
+    {
+      "id": 7,
+      "type": "general position"
+    },
+    {
+      "id": 8,
+      "type": "other"
+    }
+  ],
+  "techniqueHistory": [],
+  "techniqueHit": []
 }
