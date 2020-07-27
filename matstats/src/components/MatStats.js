@@ -1,14 +1,12 @@
 import React from 'react'
-import { Alert } from 'react-bootstrap'
 import ApplicationViews from './ApplicationViews'
+import NavBar from './header/NavBar'
 
 const MatStats = () => {
 
     return (
         <>
-            <Alert variant='info'>
-                <div><h1>AY BITCH</h1></div>
-            </Alert>
+            <NavBar />
             <ApplicationViews />
         </>
     )

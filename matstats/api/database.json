@@ -1,5 +1,30 @@
 {
-    "users": [],
+    "users": [
+        {
+            "id": 1,
+            "username": "whiteBeltBaller",
+            "email": "hellohaha@gmail.com",
+            "password": "asdf"
+        },
+        {
+            "id": 2,
+            "username": "john",
+            "email": "lalala@gmail.com",
+            "password": "asdf"
+        },
+        {
+            "id": 3,
+            "username": "armSnatcher",
+            "email": "armbar@hotspot.net",
+            "password": "asdf"
+        },
+        {
+            "id": 4,
+            "username": "bbBlackbelt",
+            "email": "hellohaha@gmail.com",
+            "password": "asdf"
+        }
+    ],
     "sessions": [],
     "sessionTypes": [
         {

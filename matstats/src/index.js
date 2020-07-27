@@ -4,6 +4,7 @@ import MatStats from './components/MatStats'
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import * as serviceWorker from './serviceWorker';
+import './components/Main.css'
 
 ReactDOM.render(
   <React.StrictMode>
