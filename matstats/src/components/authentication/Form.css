@@ -1,0 +1,15 @@
+.Form__container {
+    padding: 4rem .2rem;
+}
+
+
+.Form__buttonBox {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.Form__button {
+    padding: .2rem;
+    margin: .2rem;
+}

@@ -14,7 +14,7 @@ export default {
             return fetch(`${remoteURL}/${table}/${id}?_expand=${expand}`)
                 .then(result => result.json())
         },
-        getAll(table, expand) {
+        getAll(table) {
             return fetch(`${remoteURL}/${table}`)
                 .then(result => result.json())
         },

@@ -3,7 +3,11 @@
     background-color: black;
 }
 
-.header__text {
-    
+.header__text {    
     color: rgb(234, 224, 213);
+}
+
+.header__container {
+    display: flex;
+    justify-content: space-between;
 }
