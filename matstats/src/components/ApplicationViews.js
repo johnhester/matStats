@@ -7,7 +7,8 @@ import Registration from './authentication/Registration'
 
 const ApplicationViews = (props) => {
 
-
+    const hasUser = props.hasUser
+    const setUser = props.setUser
 
     return (
         <>  
@@ -15,20 +16,24 @@ const ApplicationViews = (props) => {
                 <Route                
                     exact path="/"
                     render={props => {
-                        console.log("I'm rendering in the home route")
-                        return <Home {...props}/>
+                        if(hasUser) {
+                            return <Home {...props}/>
+                        } else {
+                            return <Redirect to='/login' />
+                        }
+                        
                     }}
                 />
                 <Route
                     path="/login"
                     render={props => {
-                        return <Login {...props}/>
+                        return <Login setUser={setUser} {...props}/>
                     }}
                 />
                 <Route
                     path="/register"
                     render={props => {
-                        return <Registration {...props}/>
+                        return <Registration setUser={setUser} {...props}/>
                     }}
                 />
             </Router>
