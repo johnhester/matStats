@@ -1,3 +1,26 @@
 .home__body {
     padding: 4rem .2rem;
 }
+
+.home__box {
+    
+    width: 90%;
+    margin: 3rem 1rem;
+}
+
+.home__techniques {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-around;    
+}
+
+.home__techniques--card {
+    padding: .2rem .5rem;
+    margin: .3rem;
+}
+
+
+.home__session--header {
+    display: flex;
+    justify-content: space-between;
+}

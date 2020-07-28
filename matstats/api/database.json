@@ -37,7 +37,16 @@
       "id": 6
     }
   ],
-  "sessions": [],
+  "sessions": [
+    {
+      "id": 1,
+      "userId": 2,
+      "notes": "Gosh Mom… after all these years, God's not going to take a call from you. I think that's one of Mom's little fibs, you know, like I'll sacrifice anything for my children. He… she… what's the difference? Oh hear, hear. In the dark, it all looks the same. Early. I've been in the film business for a while but I just cant seem to get one in the can. No, I was ashamed to be SEEN with you. I like being with you. Heyyyy uncle father Oscar.",
+      "date": 12321442,
+      "length": 2,
+      "type": 3
+    }
+  ],
   "sessionTypes": [
     {
       "id": 1,
@@ -52,7 +61,26 @@
       "type": "both"
     }
   ],
-  "techniques": [],
+  "techniques": [
+    {
+      "name": "Triangle",
+      "typeId": 1,
+      "totalHit": 0,
+      "id": 1
+    },
+    {
+      "name": "Rear-Naked-Choke",
+      "typeId": "1",
+      "totalHit": 0,
+      "id": 2
+    },
+    {
+      "name": "Arm Triangle",
+      "typeId": "1",
+      "totalHit": 0,
+      "id": 3
+    }
+  ],
   "techniqueTypes": [
     {
       "id": 1,
@@ -87,6 +115,13 @@
       "type": "other"
     }
   ],
-  "techniqueHistory": [],
+  "techniqueHistory": [
+    {
+      "techniqueId": 3,
+      "userId": 2,
+      "priority": true,
+      "id": 1
+    }
+  ],
   "techniqueHit": []
 }

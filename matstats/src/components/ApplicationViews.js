@@ -4,6 +4,7 @@ import Home from './home/Home'
 import Login from './authentication/Login'
 import Registration from './authentication/Registration'
 import TechniqueHome from './techniques/TechniqueHome'
+import TechniqueForm from './techniques/TechniqueForm'
 import SessionHome from './sessions/SessionHome'
 
 
@@ -43,6 +44,17 @@ const ApplicationViews = (props) => {
                     render={props => {
                         if(hasUser) {
                             return <TechniqueHome {...props}/>
+                        } else {
+                            return <Redirect to='/login' />
+                        }
+                        
+                    }}
+                />
+                <Route                
+                    exact path="/newtechnique"
+                    render={props => {
+                        if(hasUser) {
+                            return <TechniqueForm {...props}/>
                         } else {
                             return <Redirect to='/login' />
                         }
