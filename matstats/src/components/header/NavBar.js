@@ -34,12 +34,16 @@ const NavBar = (props) => {
                     <Accordion.Collapse eventKey="0">
                         <Col>
                             
-                                <Nav.Link href="#home">Home</Nav.Link>
-                                <Nav.Link href="#home">Techniques</Nav.Link>
-                                <Nav.Link href="#home">Sessions</Nav.Link>
-                                <Nav.Link 
-                                    onClick={() => {handleLogout()}}
-                                >
+                                <Nav.Link href="/">
+                                    Home
+                                </Nav.Link>
+                                <Nav.Link href="/techniques">
+                                    Techniques
+                                </Nav.Link>
+                                <Nav.Link href="/sessions">
+                                    Sessions
+                                </Nav.Link>
+                                <Nav.Link onClick={() => {handleLogout()}}>
                                     Logout
                                 </Nav.Link>
                             
@@ -47,7 +51,7 @@ const NavBar = (props) => {
                     </Accordion.Collapse>
                 </Card>
             </Accordion>
-            <div className='header__container'>
+            <div>
                 <h3 className="header__text">matStats</h3>
             </div>
             <div className="header__text">

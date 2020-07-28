@@ -1,13 +1,10 @@
 
 .header {
     background-color: black;
+    display: flex;
+    justify-content: space-between;
 }
 
 .header__text {    
     color: rgb(234, 224, 213);
-}
-
-.header__container {
-    display: flex;
-    justify-content: space-between;
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Card from 'react-bootstrap/Card'
 
 const Home = props => {
 
@@ -8,6 +8,12 @@ const Home = props => {
         <>
             <div className="home__body">
                 Landing Page
+                <Card>
+                    
+                </Card>
+                <Card>
+
+                </Card>
             </div>
         </>
     )
