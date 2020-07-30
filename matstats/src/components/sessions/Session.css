@@ -9,3 +9,19 @@
     flex-flow: column;
     width: 50%;
 }
+
+.session__preview--header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.session__preview--date {
+    margin: .2rem;
+    padding: .2rem .5rem;
+}
+
+.session__preview--card {
+    width: 85%;
+    margin: 1rem auto;
+}

@@ -1,18 +1,14 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import Jumbotron from 'react-bootstrap/Jumbotron'
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
 import ApiManager from '../../modules/ApiManager'
+import SessionForm from './SessionForm'
 
 const SessionNew = props => {
 
-    const [types, setTypes] = useState([])
-    const [newSession, setNewSession] = useState({userId:"", notes:"", date:"", length:"", type:""})
+    
+    const [newSession, setNewSession] = useState({userId:"", notes:"", date:"", length:"", typeId:""})
 
-    const getSessionTypes = () => {
-        ApiManager.getAll('sessionTypes')
-            .then(result => setTypes(result))
-    }
+
 
     const handleFieldChange = (event) => {
         const stateToChange = {...newSession}
@@ -21,84 +17,39 @@ const SessionNew = props => {
     }
 
     const constructNewSession = (event) => {
-        event.preventDefault()
+        event.preventDefault()        
+        const sessionObj = newSession
+
+        if (isNaN(newSession.length)) {
+            alert('Please enter a number for session length.')
+        } else {
+
+            //formats date so that it can be sorted later
+            sessionObj.date = new Date(`${sessionObj.date}T00:00:00`)
+
+            sessionObj.userId = parseInt(sessionStorage.credentials, 10)
+            sessionObj.length = parseFloat(sessionObj.length, 10)
+            ApiManager.addObject('sessions', sessionObj)
+                .then(() => props.history.push('/sessions'))
+        }
+               
+
     }
 
-    // initial pull for session types 
-    useEffect(() => {
-        getSessionTypes()
-    }, [])
-
+   
     return (
         <>  
             <div className="Form__container">
                 <Jumbotron>
                     <h3>Log New Session</h3>
                 </Jumbotron>
-                <Form >
-                    <Form.Group className="session__form--date">                        
-                        <Form.Label>Date:  </Form.Label>
-                        <input 
-                            type="date"
-                            required
-                            onChange={handleFieldChange}
-                            id='date'
-                        />                        
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Session Length</Form.Label>
-                        <Form.Control 
-                            required
-                            onChange={handleFieldChange}
-                            id='length'
-                            placeholder='in hours'
-                        />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Session Type</Form.Label>
-                        <Form.Control
-                            as="select"
-                            id="typeId"
-                            onChange={handleFieldChange}
-                            required
-                        >
-                            <option value="0">pick one</option>
-                            {types.map(type => 
-                                <option 
-                                    key={type.id} 
-                                    value={type.id}
-                                >
-                                    {type.type}
-                                </option>
-                            )}
-                        </Form.Control>
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Techniques Used/Trained</Form.Label>
-                        <Form.Control 
-                            type="input"
-                        />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Notes</Form.Label>
-                        <Form.Control
-                            as='textarea'
-                            id='notes'
-                            required
-                        />
-                    </Form.Group>
-                    <Form.Group className="session__form--buttons">
-                        <Button> 
-                            Save 
-                        </Button>
-                        <Button
-                            onClick={() => {props.history.push('/sessions')}}
-                        > 
-                            Discard 
-                        </Button>
-                    </Form.Group>
-
-                </Form>
+                <SessionForm 
+                    handleFieldChange={handleFieldChange}
+                    constructNewSession={constructNewSession}
+                    {...props}
+                    comeBack='sessions'
+                />
+                
             </div>
 
         </>

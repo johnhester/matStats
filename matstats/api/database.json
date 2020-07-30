@@ -39,12 +39,36 @@
   ],
   "sessions": [
     {
-      "id": 1,
       "userId": 2,
-      "notes": "Gosh Mom… after all these years, God's not going to take a call from you. I think that's one of Mom's little fibs, you know, like I'll sacrifice anything for my children. He… she… what's the difference? Oh hear, hear. In the dark, it all looks the same. Early. I've been in the film business for a while but I just cant seem to get one in the can. No, I was ashamed to be SEEN with you. I like being with you. Heyyyy uncle father Oscar.",
-      "date": 12321442,
+      "notes": "It sucked",
+      "date": "2020-07-23T05:00:00.000Z",
+      "length": 4.5,
+      "typeId": "3",
+      "id": 2
+    },
+    {
+      "userId": 2,
+      "notes": "I don't remember",
+      "date": "2020-07-02T05:00:00.000Z",
       "length": 2,
-      "typeId": 3
+      "typeId": "1",
+      "id": 3
+    },
+    {
+      "userId": 2,
+      "notes": "blah",
+      "date": "2020-07-31T05:00:00.000Z",
+      "length": 7,
+      "typeId": "2",
+      "id": 4
+    },
+    {
+      "userId": 2,
+      "notes": "I am the best there is, the best there was, and the best there ever will be. I am the best in the world. Beat me if you can, survive if I let you. That’s the bottom line because Stone Cold said so! Hey yo. Welcome to Raw Is Jericho! Have a nice day! I am the ayatollah of rock n' rolla!",
+      "date": "2020-07-26T05:00:00.000Z",
+      "length": 3,
+      "typeId": "2",
+      "id": 5
     }
   ],
   "sessionTypes": [
@@ -109,6 +133,12 @@
       "typeId": null,
       "totalHit": 0,
       "id": 8
+    },
+    {
+      "name": "asdfadsf",
+      "typeId": "4",
+      "totalHit": 0,
+      "id": 9
     }
   ],
   "techniqueTypes": [
@@ -175,6 +205,12 @@
       "userId": 2,
       "priority": true,
       "id": 5
+    },
+    {
+      "techniqueId": 9,
+      "userId": 2,
+      "priority": true,
+      "id": 6
     }
   ],
   "techniqueHit": []
