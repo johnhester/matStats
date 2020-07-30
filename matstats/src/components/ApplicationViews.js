@@ -7,6 +7,7 @@ import TechniqueHome from './techniques/TechniqueHome'
 import TechniqueForm from './techniques/TechniqueForm'
 import TechniqueAll from './techniques/TechniqueAll'
 import SessionHome from './sessions/SessionHome'
+import SessionNew from './sessions/SessionNew'
 
 
 const ApplicationViews = (props) => {
@@ -78,6 +79,17 @@ const ApplicationViews = (props) => {
                     render={props => {
                         if(hasUser) {
                             return <SessionHome {...props}/>
+                        } else {
+                            return <Redirect to='/login' />
+                        }
+                        
+                    }}
+                />
+                <Route                
+                    exact path="/newsession"
+                    render={props => {
+                        if(hasUser) {
+                            return <SessionNew {...props}/>
                         } else {
                             return <Redirect to='/login' />
                         }

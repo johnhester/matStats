@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import ApiManager from '../../modules/ApiManager'
 import Form from 'react-bootstrap/Form'
 import {Button} from 'react-bootstrap'
+import Jumbotron from 'react-bootstrap/Jumbotron'
 
 
 const TechniqueForm = props => {
@@ -76,6 +77,9 @@ const TechniqueForm = props => {
 
     return (
         <div className="Form__container">
+            <Jumbotron>
+                <h3>Submit New Technique</h3>
+            </Jumbotron>
             <Form onSubmit={createNewTech}>
                 <Form.Group>
                     <Form.Label>Technique Name</Form.Label>
@@ -103,7 +107,7 @@ const TechniqueForm = props => {
                         )}
                     </Form.Control>
                 </Form.Group>
-                <Form.Group>
+                <Form.Group className="technique__form--priority">
                     <Form.Label>Priority?</Form.Label>
                     <Form.Check                        
                         type='checkbox'
@@ -111,11 +115,19 @@ const TechniqueForm = props => {
                         onChange={getPriority}
                     />
                 </Form.Group>
-                <Button
-                    type="Submit"
-                >
-                    Submit New Technique
-                </Button>
+                <Form.Group className="techniqueHome__buttons">
+                    <Button
+                        type="Submit"
+                    >
+                        Submit New Technique
+                    </Button>
+                    <Button
+                        type="Button"
+                        onClick={() => {props.history.push('/techniques')}}
+                    >
+                        Discard
+                    </Button>
+                </Form.Group>
             </Form>
         </div>
     )

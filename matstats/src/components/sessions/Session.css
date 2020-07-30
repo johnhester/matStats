@@ -1,0 +1,11 @@
+.session__form--buttons {
+    display: flex;
+    justify-content: space-around;
+    width: 40%;
+}
+
+.session__form--date {
+    display: flex;
+    flex-flow: column;
+    width: 50%;
+}

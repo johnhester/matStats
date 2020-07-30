@@ -24,3 +24,9 @@
 
 .technique__card--items {
 }
+
+.technique__form--priority {
+    display: flex;
+    justify-content: space-around;
+    width: 40%;
+}

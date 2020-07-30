@@ -13,12 +13,17 @@ const TechniqueHome = props => {
         ApiManager.getPriorityTechniques(sessionStorage.credentials)
             .then(results => {
                 let techs = []
-                results.map(result => techs.push(result.technique))
+                results.map(result => 
+                    result.priority === true ? techs.push(result) : null
+                )
                 setFavorites(techs)
-                console.log('results', results)
             })
     }
 
+    const handlePriorityChange = (event) => {
+        console.log('checkbox', event.target.value)
+        console.log('id', event.target.id)
+    }
 
     useEffect(() => {
         getAndSetPriorityTechs()
@@ -28,17 +33,18 @@ const TechniqueHome = props => {
         <>
             <div className="home__body">
                 <Jumbotron>
-                    <h3>Your Techniques</h3>
+                    <h3>Your current focus:</h3>
                 </Jumbotron>
                     {favorites.map(fav => 
                         <TechniqueCard 
                             key={fav.id}
                             technique={fav}
+                            handleChange={handlePriorityChange}
                         />                       
                     )}
                 <div>
                     <Form.Control
-                        placeHolder="Looking for a technique?"
+                        placeholder="Looking for a technique?"
                     />
                 </div>
                 <div className="techniqueHome__buttons">

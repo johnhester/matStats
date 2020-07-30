@@ -44,7 +44,7 @@
       "notes": "Gosh Mom… after all these years, God's not going to take a call from you. I think that's one of Mom's little fibs, you know, like I'll sacrifice anything for my children. He… she… what's the difference? Oh hear, hear. In the dark, it all looks the same. Early. I've been in the film business for a while but I just cant seem to get one in the can. No, I was ashamed to be SEEN with you. I like being with you. Heyyyy uncle father Oscar.",
       "date": 12321442,
       "length": 2,
-      "type": 3
+      "typeId": 3
     }
   ],
   "sessionTypes": [
@@ -103,6 +103,12 @@
       "typeId": "3",
       "totalHit": 0,
       "id": 7
+    },
+    {
+      "name": "",
+      "typeId": null,
+      "totalHit": 0,
+      "id": 8
     }
   ],
   "techniqueTypes": [

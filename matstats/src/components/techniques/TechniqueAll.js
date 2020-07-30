@@ -22,13 +22,13 @@ const TechniqueAll = props => {
                 <Jumbotron>
                     <h2>All Techniques</h2>                    
                 </Jumbotron>
-                {techniques.map(tech => 
+                {/* {techniques.map(tech => 
                     <TechniqueCard 
                         key={tech.id}
                         technique={tech}
                     />  
                     
-                )}
+                )} */}
             </div>
         </>
     )
