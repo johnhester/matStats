@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import ApiManager from '../../modules/ApiManager'
 import Form from 'react-bootstrap/Form'
-import Modal from 'react-bootstrap/Modal'
 import {Button} from 'react-bootstrap'
 
 
@@ -50,6 +49,7 @@ const TechniqueForm = props => {
                 })
 
                 if (badTech === false && priority !== true) {
+                    newTech.typeId = parseInt(newTech.typeId)
                     ApiManager.addObject('techniques', newTech)
                         .then(props.history.push('/techniques'))
                 } else if (badTech === false && priority === true) {
@@ -112,8 +112,7 @@ const TechniqueForm = props => {
                     />
                 </Form.Group>
                 <Button
-                    type="click"
-                    onClick={() => {console.log('button', priority)}}
+                    type="Submit"
                 >
                     Submit New Technique
                 </Button>

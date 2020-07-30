@@ -41,6 +41,10 @@ export default {
                 },
                 body: JSON.stringify(editedObject)
             }).then(data => data.json());
+        },        
+        getPriorityTechniques(id) {
+            return fetch(`${remoteURL}/techniqueHistory?userId=${id}&_expand=technique`)
+                .then(data => data.json())
         }
 
 

@@ -16,9 +16,9 @@ const NavBar = (props) => {
 
         return (
             <button
-            type="button"
-            style={{ backgroundColor: 'EAE0D5' }}
-            onClick={decoratedOnClick}
+                type="button"
+                style={{ backgroundColor: 'EAE0D5' }}
+                onClick={decoratedOnClick}
             >
             {children}
             </button>
@@ -28,6 +28,7 @@ const NavBar = (props) => {
 // Bastard creation of accordion, navbar, and card bootstrap css
     return (
         <Navbar variant="dark" fixed="top" className="header">
+            { props.hasUser ?
             <Accordion>
                 <Card bg="dark">
                     <CustomToggle eventKey="0"> = </CustomToggle>
@@ -51,6 +52,8 @@ const NavBar = (props) => {
                     </Accordion.Collapse>
                 </Card>
             </Accordion>
+            : null
+            }
             <div>
                 <h3 className="header__text">matStats</h3>
             </div>

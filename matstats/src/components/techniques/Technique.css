@@ -1,0 +1,26 @@
+.technique__body {
+    padding: 4rem .2rem;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+}
+
+.techniqueHome__buttons {
+    display: flex;
+    justify-content: space-around;
+    margin: 1rem;
+}
+
+.technique__card {
+    margin: 1rem;
+}
+
+.technique__card--body {
+    margin: .05rem;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+
+.technique__card--items {
+}
