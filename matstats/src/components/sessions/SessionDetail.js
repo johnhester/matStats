@@ -5,17 +5,22 @@ import { Card } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button'
 
 const SessionDetail = props => {
-    const [session, setSession] = useState({userId:"", notes:"", date:"", length:"", typeId:"", id:""})
-    const [type, setType] = useState({type:""})
+    const [session, setSession] = useState({userId:"", notes:"", date:"", length:"", sessionTypeId:"", id:""})
+    const [date, setDate] = useState()
+    const [type, setType] = useState()
     const [isLoading, setIsLoading] = useState(true)
+
+
 
     const getSession = () => {
         ApiManager.getExpanded('sessions', props.sessionId, 'sessionType')
-            .then(results => {
-                setSession(results)
-                setType(results.sessionType.type)
+            .then(result => {
+                setSession(result)
+                setType(result.sessionType.type)
+                setDate(props.formatDates(result.date))
             })
     }
+    
 
     const handleDelete = () => {
         ApiManager.deleteObject('sessions', props.sessionId)
@@ -37,13 +42,13 @@ const SessionDetail = props => {
                     <Card.Body>
 
                         <div>
-                            This session was on {session.date.slice(0,10)}
+                            This session was on {date}                        
                         </div>
                         <div>
                             It was {session.length} hour(s) long. 
                         </div>
                         <div>
-                            Youd spent the session {type.type}.
+                            You spent the session {type}.
                         </div>
                         <Card body className="session__detail--technique">
                             Technique placeholder
@@ -65,6 +70,7 @@ const SessionDetail = props => {
                             </Button>
                         </Link>
                         <Button
+                            type="submit"
                             disabled={isLoading}
                             onClick={handleDelete}
                         >

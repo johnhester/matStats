@@ -41,7 +41,7 @@
     {
       "userId": 2,
       "notes": "It sucked",
-      "date": "2020-07-23T00:00:00.000Z",
+      "date": "2020-07-23",
       "length": 4.5,
       "sessionTypeId": "3",
       "id": 2
@@ -49,7 +49,7 @@
     {
       "userId": 2,
       "notes": "I don't remember",
-      "date": "2020-07-02T00:00:00.000Z",
+      "date": "2020-07-02",
       "length": 2,
       "sessionTypeId": "1",
       "id": 3
@@ -57,7 +57,7 @@
     {
       "userId": 2,
       "notes": "I am the best there is, the best there was, and the best there ever will be. I am the best in the world. Beat me if you can, survive if I let you. That’s the bottom line because Stone Cold said so! Hey yo. Welcome to Raw Is Jericho! Have a nice day! I am the ayatollah of rock n' rolla!",
-      "date": "2020-07-26T00:00:00.000Z",
+      "date": "2020-07-26",
       "length": 3,
       "sessionTypeId": "2",
       "id": 5
@@ -65,7 +65,7 @@
     {
       "userId": 2,
       "notes": "Can you dig it sucka? Ohhhh yes! Everybody's got a price for the Million Dollar Man! Quote the Raven, nevermore. I am the best there is, the best there was, and the best there ever will be. For the benefit of those with flash photography... I am the best in the world. Austin 3:16 says I just whipped your a**!",
-      "date": "2020-07-28T00:00:00.000Z",
+      "date": "2020-07-28",
       "length": 1.5,
       "sessionTypeId": "2",
       "id": 6
@@ -73,7 +73,7 @@
     {
       "userId": 2,
       "notes": "WOOOOO! Austin 3:16 says I just whipped your a**! I am the ayatollah of rock n' rolla! Beat me if you can, survive if I let you. Ladies and gentleman, boys and girls, children of all ages, Degeneration X, proudly brings to you, your WWF TAG TEAM CHAMPIONS OF THE WORLD! The Road Dog Jesse James! The Badass Billy Gunn! The New! Age! Outlaws! Give me a hell yeah! If you smell, what The Rock is cooking! Will never, ever, be the same, again!",
-      "date": "2020-07-03T00:00:00.000Z",
+      "date": "2020-07-03",
       "length": 45,
       "sessionTypeId": "1",
       "id": 7
@@ -82,9 +82,17 @@
       "id": 8,
       "userId": 2,
       "notes": "I am the best in the world. Give me a hell yeah! Ladies and gentleman, boys and girls, children of all ages, Degeneration X, proudly brings to you, your WWF TAG TEAM CHAMPIONS OF THE WORLD! The Road Dog Jesse James! The Badass Billy Gunn! The New! Age! Outlaws! Austin 3:16 says I just whipped your a**! Whatcha gonna do when Hulkamania runs wild on you! This is for all my peeps! Ooooh yeah! Hey yo.",
-      "date": "2020-07-30T00:00:00.000Z",
+      "date": "2020-07-30",
       "length": "2",
       "sessionTypeId": "3"
+    },
+    {
+      "userId": 2,
+      "notes": "Lorem Khaled Ipsum is a major key to success. Cloth talk. The weather is amazing, walk with me through the pathway of more success. Take this journey with me, Lion! Let me be clear, you have to make it through the jungle to make it to paradise, that’s the key, Lion! I told you all this before, when you have a swimming pool, do not use chlorine, use salt water, the healing, salt water is the healing. Hammock talk come soon. Mogul talk. I told you all this before, when you have a swimming pool, do not use chlorine, use salt water, the healing, salt water is the healing.",
+      "date": "2020-07-18",
+      "length": 2,
+      "sessionTypeId": "2",
+      "id": 9
     }
   ],
   "sessionTypes": [
