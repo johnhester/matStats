@@ -30,7 +30,7 @@ const SessionHome = props => {
                 <Jumbotron>
                     <h3>Your Training Log</h3>
                 </Jumbotron>
-                <div>
+                <div className="session__home--new">
                     <Button
                         type='button'
                         onClick={() => {props.history.push('/newSession')}}
@@ -43,7 +43,7 @@ const SessionHome = props => {
                     <SessionPreview 
                         key={session.id}
                         session={session}
-                        
+                        formatDates={props.formatDates}
                     />
                 )}
 

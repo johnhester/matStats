@@ -8,12 +8,24 @@ import TechniqueForm from './techniques/TechniqueForm'
 import TechniqueAll from './techniques/TechniqueAll'
 import SessionHome from './sessions/SessionHome'
 import SessionNew from './sessions/SessionNew'
+import SessionDetail from './sessions/SessionDetail'
+import SessionEdit from './sessions/SessionEdit'
 
 
 const ApplicationViews = (props) => {
 
     const hasUser = props.hasUser
     const setUser = props.setUser
+
+
+    const formatDates = (sessionDate) => {
+        //creating date format
+        const preferredFormat = {weekday: 'long', year: 'numeric', month: 'long', day:'numeric'}
+        const dateFormat = new Intl.DateTimeFormat('en-US', preferredFormat)         
+
+         return dateFormat.format(new Date(sessionDate))        
+
+    }
 
     return (
         <>  
@@ -78,7 +90,10 @@ const ApplicationViews = (props) => {
                     exact path="/sessions"
                     render={props => {
                         if(hasUser) {
-                            return <SessionHome {...props}/>
+                            return <SessionHome 
+                                        formatDates={formatDates}
+                                        {...props}
+                                    />
                         } else {
                             return <Redirect to='/login' />
                         }
@@ -90,6 +105,34 @@ const ApplicationViews = (props) => {
                     render={props => {
                         if(hasUser) {
                             return <SessionNew {...props}/>
+                        } else {
+                            return <Redirect to='/login' />
+                        }
+                        
+                    }}
+                />
+                <Route                
+                    exact path="/sessions/:sessionId(\d+)"
+                    render={props => {
+                        if(hasUser) {
+                            return <SessionDetail 
+                                        sessionId={parseInt(props.match.params.sessionId)}
+                                        formatDates={formatDates}
+                                        {...props}
+                                    />
+                        } else {
+                            return <Redirect to='/login' />
+                        }
+                        
+                    }}
+                />
+                <Route                
+                    exact path="/sessions/:sessionId(\d+)/edit"
+                    render={props => {
+                        if(hasUser) {
+                            return <SessionEdit
+                                        {...props}
+                                    />
                         } else {
                             return <Redirect to='/login' />
                         }

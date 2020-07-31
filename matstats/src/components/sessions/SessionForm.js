@@ -19,7 +19,7 @@ const SessionForm = props => {
 
     return (
         <>
-            <Form onSubmit={props.constructNewSession}>
+            <Form onSubmit={props.action === 'edit' ? props.updateSession : props.constructNewSession}>
                     <Form.Group className="session__form--date">                        
                         <Form.Label>Date  </Form.Label>
                         <input 
@@ -27,6 +27,7 @@ const SessionForm = props => {
                             required
                             onChange={props.handleFieldChange}
                             id='date'
+                            value={props.action === 'edit' ? props.session.date.slice(0,10) : null}
                         />                        
                     </Form.Group>
                     <Form.Group>
@@ -36,15 +37,17 @@ const SessionForm = props => {
                             onChange={props.handleFieldChange}
                             id='length'
                             placeholder='in hours'
+                            value={props.action === 'edit' ? props.session.length : null}
                         />
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Session Type</Form.Label>
                         <Form.Control
                             as="select"
-                            id="typeId"
+                            id="sessionTypeId"
                             onChange={props.handleFieldChange}
                             required
+                            value={props.action === 'edit' ? props.session.sessionTypeId : null}
                         >
                             <option value="0">pick one</option>
                             {types.map(type => 
@@ -71,16 +74,18 @@ const SessionForm = props => {
                             placeholder='How did it go?'
                             onChange={props.handleFieldChange}
                             required
+                            value={props.action === 'edit' ? props.session.notes : null}
                         />
                     </Form.Group>
                     <Form.Group className="session__form--buttons">
                         <Button
                             type="submit"
+                            disabled={props.loading}
                         > 
-                            Save 
+                            {props.action === 'edit' ? 'Edit' : 'Save'} 
                         </Button>
                         <Button
-                            onClick={() => {props.history.push(`./${props.comeBack}`)}}
+                            onClick={() => {props.history.push(props.comeBack)}}
                         > 
                             Discard 
                         </Button>

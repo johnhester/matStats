@@ -6,7 +6,7 @@ import SessionForm from './SessionForm'
 const SessionNew = props => {
 
     
-    const [newSession, setNewSession] = useState({userId:"", notes:"", date:"", length:"", typeId:""})
+    const [newSession, setNewSession] = useState({userId:"", notes:"", date:"", length:"", sessionTypeId:""})
 
 
 
@@ -25,7 +25,7 @@ const SessionNew = props => {
         } else {
 
             //formats date so that it can be sorted later
-            sessionObj.date = new Date(`${sessionObj.date}T00:00:00`)
+            sessionObj.date = new Date(`${sessionObj.date}`)
 
             sessionObj.userId = parseInt(sessionStorage.credentials, 10)
             sessionObj.length = parseFloat(sessionObj.length, 10)
@@ -48,6 +48,7 @@ const SessionNew = props => {
                     constructNewSession={constructNewSession}
                     {...props}
                     comeBack='sessions'
+                    action='new'
                 />
                 
             </div>

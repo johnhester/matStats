@@ -41,34 +41,50 @@
     {
       "userId": 2,
       "notes": "It sucked",
-      "date": "2020-07-23T05:00:00.000Z",
+      "date": "2020-07-23T00:00:00.000Z",
       "length": 4.5,
-      "typeId": "3",
+      "sessionTypeId": "3",
       "id": 2
     },
     {
       "userId": 2,
       "notes": "I don't remember",
-      "date": "2020-07-02T05:00:00.000Z",
+      "date": "2020-07-02T00:00:00.000Z",
       "length": 2,
-      "typeId": "1",
+      "sessionTypeId": "1",
       "id": 3
     },
     {
       "userId": 2,
-      "notes": "blah",
-      "date": "2020-07-31T05:00:00.000Z",
-      "length": 7,
-      "typeId": "2",
-      "id": 4
+      "notes": "I am the best there is, the best there was, and the best there ever will be. I am the best in the world. Beat me if you can, survive if I let you. That’s the bottom line because Stone Cold said so! Hey yo. Welcome to Raw Is Jericho! Have a nice day! I am the ayatollah of rock n' rolla!",
+      "date": "2020-07-26T00:00:00.000Z",
+      "length": 3,
+      "sessionTypeId": "2",
+      "id": 5
     },
     {
       "userId": 2,
-      "notes": "I am the best there is, the best there was, and the best there ever will be. I am the best in the world. Beat me if you can, survive if I let you. That’s the bottom line because Stone Cold said so! Hey yo. Welcome to Raw Is Jericho! Have a nice day! I am the ayatollah of rock n' rolla!",
-      "date": "2020-07-26T05:00:00.000Z",
-      "length": 3,
-      "typeId": "2",
-      "id": 5
+      "notes": "Can you dig it sucka? Ohhhh yes! Everybody's got a price for the Million Dollar Man! Quote the Raven, nevermore. I am the best there is, the best there was, and the best there ever will be. For the benefit of those with flash photography... I am the best in the world. Austin 3:16 says I just whipped your a**!",
+      "date": "2020-07-28T00:00:00.000Z",
+      "length": 1.5,
+      "sessionTypeId": "2",
+      "id": 6
+    },
+    {
+      "userId": 2,
+      "notes": "WOOOOO! Austin 3:16 says I just whipped your a**! I am the ayatollah of rock n' rolla! Beat me if you can, survive if I let you. Ladies and gentleman, boys and girls, children of all ages, Degeneration X, proudly brings to you, your WWF TAG TEAM CHAMPIONS OF THE WORLD! The Road Dog Jesse James! The Badass Billy Gunn! The New! Age! Outlaws! Give me a hell yeah! If you smell, what The Rock is cooking! Will never, ever, be the same, again!",
+      "date": "2020-07-03T00:00:00.000Z",
+      "length": 45,
+      "sessionTypeId": "1",
+      "id": 7
+    },
+    {
+      "id": 8,
+      "userId": 2,
+      "notes": "I am the best in the world. Give me a hell yeah! Ladies and gentleman, boys and girls, children of all ages, Degeneration X, proudly brings to you, your WWF TAG TEAM CHAMPIONS OF THE WORLD! The Road Dog Jesse James! The Badass Billy Gunn! The New! Age! Outlaws! Austin 3:16 says I just whipped your a**! Whatcha gonna do when Hulkamania runs wild on you! This is for all my peeps! Ooooh yeah! Hey yo.",
+      "date": "2020-07-30T00:00:00.000Z",
+      "length": "2",
+      "sessionTypeId": "3"
     }
   ],
   "sessionTypes": [
@@ -82,7 +98,7 @@
     },
     {
       "id": 3,
-      "type": "both"
+      "type": "drilling and sparring"
     }
   ],
   "techniques": [

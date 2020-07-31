@@ -1,3 +1,10 @@
+.session__home--new {
+    display: flex;
+    justify-content: flex-end;
+    width: 85%;
+    margin: .2rem auto;
+}
+
 .session__form--buttons {
     display: flex;
     justify-content: space-around;
@@ -24,4 +31,14 @@
 .session__preview--card {
     width: 85%;
     margin: 1rem auto;
+}
+
+.session__detail--buttons {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 1rem;
+}
+
+.session__detail--technique {
+    margin: 1rem;
 }
