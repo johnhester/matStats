@@ -16,9 +16,9 @@ const NavBar = (props) => {
 
         return (
             <button
-            type="button"
-            style={{ backgroundColor: 'EAE0D5' }}
-            onClick={decoratedOnClick}
+                type="button"
+                style={{ backgroundColor: 'EAE0D5' }}
+                onClick={decoratedOnClick}
             >
             {children}
             </button>
@@ -28,18 +28,23 @@ const NavBar = (props) => {
 // Bastard creation of accordion, navbar, and card bootstrap css
     return (
         <Navbar variant="dark" fixed="top" className="header">
+            { props.hasUser ?
             <Accordion>
                 <Card bg="dark">
                     <CustomToggle eventKey="0"> = </CustomToggle>
                     <Accordion.Collapse eventKey="0">
                         <Col>
                             
-                                <Nav.Link href="#home">Home</Nav.Link>
-                                <Nav.Link href="#home">Techniques</Nav.Link>
-                                <Nav.Link href="#home">Sessions</Nav.Link>
-                                <Nav.Link 
-                                    onClick={() => {handleLogout()}}
-                                >
+                                <Nav.Link href="/">
+                                    Home
+                                </Nav.Link>
+                                <Nav.Link href="/techniques">
+                                    Techniques
+                                </Nav.Link>
+                                <Nav.Link href="/sessions">
+                                    Sessions
+                                </Nav.Link>
+                                <Nav.Link onClick={() => {handleLogout()}}>
                                     Logout
                                 </Nav.Link>
                             
@@ -47,7 +52,9 @@ const NavBar = (props) => {
                     </Accordion.Collapse>
                 </Card>
             </Accordion>
-            <div className='header__container'>
+            : null
+            }
+            <div>
                 <h3 className="header__text">matStats</h3>
             </div>
             <div className="header__text">

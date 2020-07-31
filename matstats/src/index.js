@@ -8,7 +8,7 @@ import './components/Main.css'
 
 ReactDOM.render(
   <React.StrictMode>
-    <MatStats />
+    <MatStats/>
   </React.StrictMode>,
   document.getElementById('root')
 );

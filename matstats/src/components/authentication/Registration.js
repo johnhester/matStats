@@ -47,6 +47,7 @@ const Registration = props => {
                         alert('That email is already in use.')
                         badEmail = true
                     }
+                    return ""
                 })
                 //compares passwords and creates new user if the flags didn't trip in the .find
                 if (newUser.password !== password2) {

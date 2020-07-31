@@ -22,7 +22,7 @@ const MatStats = () => {
 
     return (
         <>
-            <NavBar clearUser={clearUser} />
+            <NavBar clearUser={clearUser} hasUser={hasUser} />
             <ApplicationViews hasUser={hasUser} setUser={setUser} />
         </>
     )

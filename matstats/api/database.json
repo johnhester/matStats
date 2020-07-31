@@ -37,7 +37,56 @@
       "id": 6
     }
   ],
-  "sessions": [],
+  "sessions": [
+    {
+      "userId": 2,
+      "notes": "It sucked",
+      "date": "2020-07-23T00:00:00.000Z",
+      "length": 4.5,
+      "sessionTypeId": "3",
+      "id": 2
+    },
+    {
+      "userId": 2,
+      "notes": "I don't remember",
+      "date": "2020-07-02T00:00:00.000Z",
+      "length": 2,
+      "sessionTypeId": "1",
+      "id": 3
+    },
+    {
+      "userId": 2,
+      "notes": "I am the best there is, the best there was, and the best there ever will be. I am the best in the world. Beat me if you can, survive if I let you. That’s the bottom line because Stone Cold said so! Hey yo. Welcome to Raw Is Jericho! Have a nice day! I am the ayatollah of rock n' rolla!",
+      "date": "2020-07-26T00:00:00.000Z",
+      "length": 3,
+      "sessionTypeId": "2",
+      "id": 5
+    },
+    {
+      "userId": 2,
+      "notes": "Can you dig it sucka? Ohhhh yes! Everybody's got a price for the Million Dollar Man! Quote the Raven, nevermore. I am the best there is, the best there was, and the best there ever will be. For the benefit of those with flash photography... I am the best in the world. Austin 3:16 says I just whipped your a**!",
+      "date": "2020-07-28T00:00:00.000Z",
+      "length": 1.5,
+      "sessionTypeId": "2",
+      "id": 6
+    },
+    {
+      "userId": 2,
+      "notes": "WOOOOO! Austin 3:16 says I just whipped your a**! I am the ayatollah of rock n' rolla! Beat me if you can, survive if I let you. Ladies and gentleman, boys and girls, children of all ages, Degeneration X, proudly brings to you, your WWF TAG TEAM CHAMPIONS OF THE WORLD! The Road Dog Jesse James! The Badass Billy Gunn! The New! Age! Outlaws! Give me a hell yeah! If you smell, what The Rock is cooking! Will never, ever, be the same, again!",
+      "date": "2020-07-03T00:00:00.000Z",
+      "length": 45,
+      "sessionTypeId": "1",
+      "id": 7
+    },
+    {
+      "id": 8,
+      "userId": 2,
+      "notes": "I am the best in the world. Give me a hell yeah! Ladies and gentleman, boys and girls, children of all ages, Degeneration X, proudly brings to you, your WWF TAG TEAM CHAMPIONS OF THE WORLD! The Road Dog Jesse James! The Badass Billy Gunn! The New! Age! Outlaws! Austin 3:16 says I just whipped your a**! Whatcha gonna do when Hulkamania runs wild on you! This is for all my peeps! Ooooh yeah! Hey yo.",
+      "date": "2020-07-30T00:00:00.000Z",
+      "length": "2",
+      "sessionTypeId": "3"
+    }
+  ],
   "sessionTypes": [
     {
       "id": 1,
@@ -49,10 +98,65 @@
     },
     {
       "id": 3,
-      "type": "both"
+      "type": "drilling and sparring"
     }
   ],
-  "techniques": [],
+  "techniques": [
+    {
+      "name": "Triangle",
+      "typeId": 1,
+      "totalHit": 0,
+      "id": 1
+    },
+    {
+      "name": "Rear-Naked-Choke",
+      "typeId": "1",
+      "totalHit": 0,
+      "id": 2
+    },
+    {
+      "name": "Arm Triangle",
+      "typeId": "1",
+      "totalHit": 0,
+      "id": 3
+    },
+    {
+      "name": "Flower Sweep",
+      "typeId": "2",
+      "totalHit": 0,
+      "id": 4
+    },
+    {
+      "name": "Half-Guard",
+      "typeId": "5",
+      "totalHit": 0,
+      "id": 5
+    },
+    {
+      "name": "Scissor Sweep",
+      "typeId": "2",
+      "totalHit": 0,
+      "id": 6
+    },
+    {
+      "name": "Hitch Hike",
+      "typeId": "3",
+      "totalHit": 0,
+      "id": 7
+    },
+    {
+      "name": "",
+      "typeId": null,
+      "totalHit": 0,
+      "id": 8
+    },
+    {
+      "name": "asdfadsf",
+      "typeId": "4",
+      "totalHit": 0,
+      "id": 9
+    }
+  ],
   "techniqueTypes": [
     {
       "id": 1,
@@ -87,6 +191,43 @@
       "type": "other"
     }
   ],
-  "techniqueHistory": [],
+  "techniqueHistory": [
+    {
+      "techniqueId": 3,
+      "userId": 2,
+      "priority": true,
+      "id": 1
+    },
+    {
+      "techniqueId": 4,
+      "userId": 2,
+      "priority": true,
+      "id": 2
+    },
+    {
+      "techniqueId": 5,
+      "userId": 2,
+      "priority": true,
+      "id": 3
+    },
+    {
+      "techniqueId": 6,
+      "userId": 2,
+      "priority": true,
+      "id": 4
+    },
+    {
+      "techniqueId": 7,
+      "userId": 2,
+      "priority": true,
+      "id": 5
+    },
+    {
+      "techniqueId": 9,
+      "userId": 2,
+      "priority": true,
+      "id": 6
+    }
+  ],
   "techniqueHit": []
 }

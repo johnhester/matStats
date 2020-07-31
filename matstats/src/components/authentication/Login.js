@@ -11,7 +11,6 @@ const Login = props => {
         const stateToChange = {...credentials}
         stateToChange[event.target.id] = event.target.value
         setCredentials(stateToChange)
-        console.log('credentials', credentials)
     }
 
     const handleLogin = (submitted) => {
@@ -21,7 +20,6 @@ const Login = props => {
         ApiManager.getAll('users')
             .then((users) => {
                 users.find(user => {
-                    console.log(user)
                     // checks user credentials against those entered on the form
                     if (user.username === credentials.username && user.password !== credentials.password) {
                         alert('Incorrect password. Please re-enter.')

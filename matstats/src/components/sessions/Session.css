@@ -1,0 +1,44 @@
+.session__home--new {
+    display: flex;
+    justify-content: flex-end;
+    width: 85%;
+    margin: .2rem auto;
+}
+
+.session__form--buttons {
+    display: flex;
+    justify-content: space-around;
+    width: 40%;
+}
+
+.session__form--date {
+    display: flex;
+    flex-flow: column;
+    width: 50%;
+}
+
+.session__preview--header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.session__preview--date {
+    margin: .2rem;
+    padding: .2rem .5rem;
+}
+
+.session__preview--card {
+    width: 85%;
+    margin: 1rem auto;
+}
+
+.session__detail--buttons {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 1rem;
+}
+
+.session__detail--technique {
+    margin: 1rem;
+}
