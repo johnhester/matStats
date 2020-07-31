@@ -40,14 +40,6 @@
   "sessions": [
     {
       "userId": 2,
-      "notes": "It sucked",
-      "date": "2020-07-23",
-      "length": 4.5,
-      "sessionTypeId": "3",
-      "id": 2
-    },
-    {
-      "userId": 2,
       "notes": "I don't remember",
       "date": "2020-07-02",
       "length": 2,
@@ -82,8 +74,8 @@
       "id": 8,
       "userId": 2,
       "notes": "I am the best in the world. Give me a hell yeah! Ladies and gentleman, boys and girls, children of all ages, Degeneration X, proudly brings to you, your WWF TAG TEAM CHAMPIONS OF THE WORLD! The Road Dog Jesse James! The Badass Billy Gunn! The New! Age! Outlaws! Austin 3:16 says I just whipped your a**! Whatcha gonna do when Hulkamania runs wild on you! This is for all my peeps! Ooooh yeah! Hey yo.",
-      "date": "2020-07-30",
-      "length": "2",
+      "date": "2020-07-30T00:00:00.000Z",
+      "length": "3",
       "sessionTypeId": "3"
     },
     {
@@ -153,16 +145,10 @@
       "id": 7
     },
     {
-      "name": "",
-      "typeId": null,
+      "name": "De La Riva",
+      "typeId": "5",
       "totalHit": 0,
       "id": 8
-    },
-    {
-      "name": "asdfadsf",
-      "typeId": "4",
-      "totalHit": 0,
-      "id": 9
     }
   ],
   "techniqueTypes": [
@@ -215,13 +201,13 @@
     {
       "techniqueId": 5,
       "userId": 2,
-      "priority": true,
+      "priority": false,
       "id": 3
     },
     {
       "techniqueId": 6,
       "userId": 2,
-      "priority": true,
+      "priority": false,
       "id": 4
     },
     {
@@ -231,7 +217,7 @@
       "id": 5
     },
     {
-      "techniqueId": 9,
+      "techniqueId": 8,
       "userId": 2,
       "priority": true,
       "id": 6

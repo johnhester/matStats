@@ -5,15 +5,36 @@ import TechniqueCard from './TechniqueCard'
 
 const TechniqueAll = props => {
 
-    const [techniques, setTechniques] = useState([])
+    const [allTechs, setAllTechs] = useState([])
+    const [priorityTechs, setPriorityTechs] = useState([])
+    const [combinedTechs, setCombinedTechs] = useState([])
 
-    const getAndSetAllTechs= () => {
+    const getAndSetAllTechs = () => {
         ApiManager.getAll('techniques')
-            .then(results => setTechniques(results))
+            .then(results => {
+                setAllTechs(results)
+                console.log('all', results)
+            })
     }
+
+    const getAndSetPriority = () => {
+        ApiManager.getPriorityTechniques(sessionStorage.credentials)
+        .then(results => {
+            setPriorityTechs(results)
+            console.log('priority', results)
+        })
+    }
+
+    const organizeTechs = () => {
+        const sortedTechs = []
+
+    }
+
 
     useEffect(() => {
         getAndSetAllTechs()
+        getAndSetPriority()
+        organizeTechs()
     }, [])
 
     return (
@@ -22,13 +43,13 @@ const TechniqueAll = props => {
                 <Jumbotron>
                     <h2>All Techniques</h2>                    
                 </Jumbotron>
-                {/* {techniques.map(tech => 
+                {allTechs.map(tech => 
                     <TechniqueCard 
                         key={tech.id}
                         technique={tech}
                     />  
                     
-                )} */}
+                )}
             </div>
         </>
     )

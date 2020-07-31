@@ -6,6 +6,7 @@ import Registration from './authentication/Registration'
 import TechniqueHome from './techniques/TechniqueHome'
 import TechniqueForm from './techniques/TechniqueForm'
 import TechniqueAll from './techniques/TechniqueAll'
+import TechniqueDetail from './techniques/TechniqueDetail'
 import SessionHome from './sessions/SessionHome'
 import SessionNew from './sessions/SessionNew'
 import SessionDetail from './sessions/SessionDetail'
@@ -80,6 +81,20 @@ const ApplicationViews = (props) => {
                     render={props => {
                         if(hasUser) {
                             return <TechniqueAll {...props}/>
+                        } else {
+                            return <Redirect to='/login' />
+                        }
+                        
+                    }}
+                />
+                <Route                
+                    exact path="/techniques/:techniqueId(\d+)"
+                    render={props => {
+                        if(hasUser) {
+                            return <TechniqueDetail 
+                                        techniqueId={parseInt(props.match.params.techniqueId)}
+                                        {...props}
+                                    />
                         } else {
                             return <Redirect to='/login' />
                         }

@@ -30,3 +30,13 @@
     justify-content: space-around;
     width: 40%;
 }
+
+.technique__detail--container {
+    margin: 4rem .5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.technique__detail--containerItems {
+
+}

@@ -45,6 +45,10 @@ export default {
         getPriorityTechniques(id) {
             return fetch(`${remoteURL}/techniqueHistory?userId=${id}&_expand=technique`)
                 .then(data => data.json())
+        },        
+        getSinglePriority(techId, userId) {
+            return fetch(`${remoteURL}/techniqueHistory?userId=${userId}&techniqueId=${techId}`)
+                .then(data => data.json())
         }
 
 

@@ -20,16 +20,13 @@ const TechniqueHome = props => {
             })
     }
 
-    const handlePriorityChange = (event) => {
-        console.log('checkbox', event.target.value)
-        console.log('id', event.target.id)
-    }
+
 
     useEffect(() => {
         getAndSetPriorityTechs()
     }, [])
 
-    return (
+    return ( 
         <>
             <div className="home__body">
                 <Jumbotron>
@@ -38,8 +35,10 @@ const TechniqueHome = props => {
                     {favorites.map(fav => 
                         <TechniqueCard 
                             key={fav.id}
-                            technique={fav}
-                            handleChange={handlePriorityChange}
+                            technique={fav.technique}
+                            priority={fav.priority}
+                            relationship={fav}
+                            getAndSetPriorityTechs={getAndSetPriorityTechs}
                         />                       
                     )}
                 <div>
