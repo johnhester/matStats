@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import Button from 'react-bootstrap/Button'
-import Form from 'react-bootstrap/Form'
 import ApiManager from '../../modules/ApiManager'
 import TechniqueCard from './TechniqueCard'
+import TechniqueSearch from './TechniqueSearch'
 import Jumbotron from 'react-bootstrap/Jumbotron'
 
 const TechniqueHome = props => {
@@ -20,16 +20,13 @@ const TechniqueHome = props => {
             })
     }
 
-    const handlePriorityChange = (event) => {
-        console.log('checkbox', event.target.value)
-        console.log('id', event.target.id)
-    }
+
 
     useEffect(() => {
         getAndSetPriorityTechs()
     }, [])
 
-    return (
+    return ( 
         <>
             <div className="home__body">
                 <Jumbotron>
@@ -38,14 +35,15 @@ const TechniqueHome = props => {
                     {favorites.map(fav => 
                         <TechniqueCard 
                             key={fav.id}
-                            technique={fav}
-                            handleChange={handlePriorityChange}
+                            technique={fav.technique}
+                            priority={fav.priority}
+                            relationship={fav}
+                            getAndSetPriorityTechs={getAndSetPriorityTechs}
+                            trace='home'
                         />                       
                     )}
                 <div>
-                    <Form.Control
-                        placeholder="Looking for a technique?"
-                    />
+                    <TechniqueSearch {...props}/>
                 </div>
                 <div className="techniqueHome__buttons">
                     <Button
