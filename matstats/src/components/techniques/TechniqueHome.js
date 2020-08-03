@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import Button from 'react-bootstrap/Button'
-import Form from 'react-bootstrap/Form'
 import ApiManager from '../../modules/ApiManager'
 import TechniqueCard from './TechniqueCard'
+import TechniqueSearch from './TechniqueSearch'
 import Jumbotron from 'react-bootstrap/Jumbotron'
 
 const TechniqueHome = props => {
@@ -39,12 +39,11 @@ const TechniqueHome = props => {
                             priority={fav.priority}
                             relationship={fav}
                             getAndSetPriorityTechs={getAndSetPriorityTechs}
+                            trace='home'
                         />                       
                     )}
                 <div>
-                    <Form.Control
-                        placeholder="Looking for a technique?"
-                    />
+                    <TechniqueSearch {...props}/>
                 </div>
                 <div className="techniqueHome__buttons">
                     <Button

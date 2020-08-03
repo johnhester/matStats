@@ -15,7 +15,6 @@ const TechniqueDetail = props => {
         ApiManager.getEmbedded('techniques', props.techniqueId)
             .then(result => {
                 setTechnique(result)
-                console.log('technique', result)
                 getType(result.typeId)
                 getRelationship(result.id)
             })
@@ -23,13 +22,38 @@ const TechniqueDetail = props => {
 
     const getRelationship = (techId) => {
         ApiManager.getSinglePriority(techId, sessionStorage.credentials)
-            .then(result => setRelationship(result))
+            .then(result => {
+                    setRelationship(result[0])
+            })
     }
 
     const getType = (id) => {
         ApiManager.getEmbedded('techniqueTypes', id)
             .then(result => setType(result))
     }
+
+
+    const handlePriorityChange = (event) => {
+
+        const editRelationship = {
+            "techniqueId": relationship.techniqueId,
+            "userId": parseInt(sessionStorage.credentials),
+            "priority": relationship.priority,
+            "id": relationship.id
+        }
+
+        editRelationship.priority ? editRelationship.priority = false : editRelationship.priority = true
+        ApiManager.editObject('techniqueHistory', editRelationship)
+            .then(getTechnique())
+        
+    }
+
+    const handleDelete = (event) => {
+        ApiManager.deleteObject('techniqueHistory', event.target.id)
+            .then(props.history.push('/techniques'))
+    }
+
+
 
     useEffect(() => {
         getTechnique()
@@ -43,20 +67,36 @@ const TechniqueDetail = props => {
                         <h3>{technique.name}</h3>
                     </Jumbotron>
                     <Card.Body>
-                        <div>
+                        <div className="technique__detail--containerItem">
                             Type: {type.type}
                         </div>
-                        <div>
+                        <div className="technique__detail--containerItem">
                             Priority?
                             <Form.Check
+                                className="technique__detail--checkbox"
                                 id={relationship.id}
+                                onChange={handlePriorityChange}
                                 checked={relationship.priority}
                             />
                         </div>
                     </Card.Body>
                 </Card>
-                <div>
-
+                <div className="technique__detail--buttonBox">
+                    <Button 
+                        id={relationship.id}
+                        className="technique__detail--button"
+                        type="submit"
+                        onClick={handleDelete}
+                    >
+                        Delete History
+                    </Button>
+                    <Button 
+                        className="technique__detail--button"
+                        type="submit"
+                        onClick={() => {props.history.push('/techniques')}}
+                    >
+                        Return
+                    </Button>
                 </div>
             </div>
         </>

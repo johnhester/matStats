@@ -22,9 +22,6 @@
     justify-content: space-between;
 }
 
-.technique__card--items {
-}
-
 .technique__form--priority {
     display: flex;
     justify-content: space-around;
@@ -35,8 +32,23 @@
     margin: 4rem .5rem;
     display: flex;
     justify-content: center;
+    flex-flow: column;
 }
 
-.technique__detail--containerItems {
+.technique__detail--checkbox {
+    margin: .3rem;
+}
 
+.technique__detail--buttonBox {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.technique__detail--button {
+    margin: 1rem;
+}
+
+.technique__detail--containerItem {
+    margin: 1rem;
 }

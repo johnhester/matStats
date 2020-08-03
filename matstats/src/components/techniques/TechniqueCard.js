@@ -11,20 +11,46 @@ const TechniqueCard = props => {
         console.log('id', event.target.id)
         console.log('prop check', props.relationship)
 
-        const editRelationship = {
-            "techniqueId": props.relationship.techniqueId,
-            "userId": parseInt(sessionStorage.credentials),
-            "priority": props.relationship.priority,
-            "id": props.relationship.id
+        let editRelationship = {}
+        if (props.trace === 'home') {
+            editRelationship = {            
+                "techniqueId": props.relationship.techniqueId,
+                "userId": parseInt(sessionStorage.credentials),
+                "priority": props.relationship.priority,
+                "id": props.relationship.id
+            }
+        } else {
+            editRelationship = {            
+                "techniqueId": props.technique.id,
+                "userId": parseInt(sessionStorage.credentials),
+                "priority": props.priority,
+                "id": props.relationship.id
+            }
         }
 
+        props.trace === 'home' ? editRelationship.techniqueId = props.relationship.techniqueId : editRelationship.techniqueId = props.technique.id
+
+        
         editRelationship.priority ? editRelationship.priority = false : editRelationship.priority = true
         ApiManager.editObject('techniqueHistory', editRelationship)
             .then(result => console.log('after edit',result))
-            .then(props.getAndSetPriorityTechs())
+            .then(() => {
+                
+               props.trace === 'home' ? props.getAndSetPriorityTechs() : props.getAndSetAllTechs()
+            })
         
     }
 
+    const createRelationship = (event) => {
+        const newRelationship = {
+            techniqueId: props.technique.id,
+            userId: parseInt(sessionStorage.credentials),
+            priority: true
+        }
+
+        ApiManager.addObject('techniqueHistory', newRelationship)
+            .then(() => props.getAndSetAllTechs())
+    }
 
     return (
         <>
@@ -41,7 +67,7 @@ const TechniqueCard = props => {
                     <Form.Check
                         className="technique__card--items"
                         id={props.technique.id}
-                        onChange={handlePriorityChange}
+                        onChange={ props.relationship.id === undefined ? createRelationship : handlePriorityChange}
                         checked={props.priority}
                     />
                 </Card.Body>

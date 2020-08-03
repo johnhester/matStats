@@ -18,7 +18,7 @@ const ApplicationViews = (props) => {
     const hasUser = props.hasUser
     const setUser = props.setUser
 
-
+// formats session dates, used multiple times
     const formatDates = (sessionDate) => {
         //creating date format
         const preferredFormat = {weekday: 'long', year: 'numeric', month: 'long', day:'numeric'}
@@ -27,6 +27,9 @@ const ApplicationViews = (props) => {
          return dateFormat.format(new Date(sessionDate))        
 
     }
+
+
+
 
     return (
         <>  
@@ -58,7 +61,9 @@ const ApplicationViews = (props) => {
                     exact path="/techniques"
                     render={props => {
                         if(hasUser) {
-                            return <TechniqueHome {...props}/>
+                            return <TechniqueHome 
+                                        {...props}
+                                    />
                         } else {
                             return <Redirect to='/login' />
                         }
@@ -69,7 +74,9 @@ const ApplicationViews = (props) => {
                     exact path="/newtechnique"
                     render={props => {
                         if(hasUser) {
-                            return <TechniqueForm {...props}/>
+                            return <TechniqueForm 
+                                        {...props}
+                                    />
                         } else {
                             return <Redirect to='/login' />
                         }
@@ -80,7 +87,9 @@ const ApplicationViews = (props) => {
                     exact path="/alltechniques"
                     render={props => {
                         if(hasUser) {
-                            return <TechniqueAll {...props}/>
+                            return <TechniqueAll 
+                                        {...props}
+                                    />
                         } else {
                             return <Redirect to='/login' />
                         }

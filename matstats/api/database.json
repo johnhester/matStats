@@ -199,18 +199,6 @@
       "id": 2
     },
     {
-      "techniqueId": 5,
-      "userId": 2,
-      "priority": false,
-      "id": 3
-    },
-    {
-      "techniqueId": 6,
-      "userId": 2,
-      "priority": false,
-      "id": 4
-    },
-    {
       "techniqueId": 7,
       "userId": 2,
       "priority": true,
@@ -221,6 +209,54 @@
       "userId": 2,
       "priority": true,
       "id": 6
+    },
+    {
+      "techniqueId": 1,
+      "userId": 2,
+      "priority": false,
+      "id": 7
+    },
+    {
+      "techniqueId": 5,
+      "userId": 2,
+      "priority": false,
+      "id": 8
+    },
+    {
+      "techniqueId": 1,
+      "userId": 3,
+      "priority": true,
+      "id": 9
+    },
+    {
+      "techniqueId": 2,
+      "userId": 3,
+      "priority": true,
+      "id": 10
+    },
+    {
+      "techniqueId": 3,
+      "userId": 3,
+      "priority": false,
+      "id": 11
+    },
+    {
+      "techniqueId": 4,
+      "userId": 3,
+      "priority": false,
+      "id": 12
+    },
+    {
+      "techniqueId": 8,
+      "userId": 3,
+      "priority": true,
+      "id": 13
+    },
+    {
+      "techniqueId": 6,
+      "userId": 3,
+      "priority": true,
+      "id": 14
     }
   ],
   "techniqueHit": []
