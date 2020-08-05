@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import ApiManager from '../../modules/ApiManager'
+import SessionTechSearch from './SessionTechSearch'
 
 
 const SessionForm = props => {
@@ -27,7 +28,7 @@ const SessionForm = props => {
                             required
                             onChange={props.handleFieldChange}
                             id='date'
-                            value={props.action === 'edit' ? props.session.date.slice(0,10) : null}
+                            value={props.action === 'edit' ? props.session.date.slice(0,10) : ''}
                         />                        
                     </Form.Group>
                     <Form.Group>
@@ -60,12 +61,10 @@ const SessionForm = props => {
                             )}
                         </Form.Control>
                     </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Techniques Used/Trained</Form.Label>
-                        <Form.Control 
-                            type="input"
-                        />
-                    </Form.Group>
+                    <SessionTechSearch 
+
+                        {...props}
+                    />
                     <Form.Group>
                         <Form.Label>Notes</Form.Label>
                         <Form.Control

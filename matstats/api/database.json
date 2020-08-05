@@ -74,7 +74,7 @@
       "id": 8,
       "userId": 2,
       "notes": "I am the best in the world. Give me a hell yeah! Ladies and gentleman, boys and girls, children of all ages, Degeneration X, proudly brings to you, your WWF TAG TEAM CHAMPIONS OF THE WORLD! The Road Dog Jesse James! The Badass Billy Gunn! The New! Age! Outlaws! Austin 3:16 says I just whipped your a**! Whatcha gonna do when Hulkamania runs wild on you! This is for all my peeps! Ooooh yeah! Hey yo.",
-      "date": "2020-07-30T00:00:00.000Z",
+      "date": "2020-07-30",
       "length": "3",
       "sessionTypeId": "3"
     },
@@ -85,6 +85,14 @@
       "length": 2,
       "sessionTypeId": "2",
       "id": 9
+    },
+    {
+      "userId": 2,
+      "notes": "Fan luv. Cloth talk. You smart, you loyal, you a genius. Bless up. Celebrate success right, the only way, apple. I’m up to something. You do know, you do know that they don’t want you to have lunch. I’m keeping it real with you, so what you going do is have lunch. They don’t want us to win. Celebrate success right, the only way, apple. The key to success is to keep your head above the water, never give up. You smart, you loyal, you a genius. The key to success is to keep your head above the water, never give up.",
+      "date": "2020-08-04",
+      "length": 2,
+      "sessionTypeId": "3",
+      "id": 10
     }
   ],
   "sessionTypes": [
@@ -149,6 +157,132 @@
       "typeId": "5",
       "totalHit": 0,
       "id": 8
+    },
+    {
+      "name": "Calf Slicer",
+      "typeId": 1,
+      "totalHit": 0,
+      "id": 9
+    },
+    {
+      "name": "Elevator Sweep",
+      "typeId": 2,
+      "totalHit": 0,
+      "id": 10
+    },
+    {
+      "name": "Deep-Half Guard",
+      "typeId": 5,
+      "totalHit": 0,
+      "id": 11
+    },
+    {
+      "name": "Spider Guard",
+      "typeId": 5,
+      "totalHit": 0,
+      "id": 12
+    },
+    {
+      "name": "Dummy Sweep",
+      "typeId": 2,
+      "totalHit": 0,
+      "id": 13
+    },
+    {
+      "name": "Mount Escape",
+      "typeId": 3,
+      "totalHit": 0,
+      "id": 14
+    },
+    {
+      "name": "Knee Cut",
+      "typeId": 6,
+      "totalHit": 0,
+      "id": 15
+    },
+    {
+      "name": "X Pass",
+      "typeId": 6,
+      "totalHit": 0,
+      "id": 16
+    },
+    {
+      "name": "Over-under Pass",
+      "typeId": 6,
+      "totalHit": 0,
+      "id": 17
+    },
+    {
+      "name": "Double-under ",
+      "typeId": 6,
+      "totalHit": 0,
+      "id": 18
+    },
+    {
+      "name": "Single Leg",
+      "typeId": 4,
+      "totalHit": 0,
+      "id": 19
+    },
+    {
+      "name": "Double Leg",
+      "typeId": 4,
+      "totalHit": 0,
+      "id": 20
+    },
+    {
+      "name": "Blast Double",
+      "typeId": 4,
+      "totalHit": 0,
+      "id": 21
+    },
+    {
+      "name": "Outside Single",
+      "typeId": 4,
+      "totalHit": 0,
+      "id": 22
+    },
+    {
+      "name": "Mount",
+      "typeId": 7,
+      "totalHit": 0,
+      "id": 23
+    },
+    {
+      "name": "Side Control",
+      "typeId": 7,
+      "totalHit": 0,
+      "id": 24
+    },
+    {
+      "name": "Electric Chair ",
+      "typeId": 2,
+      "totalHit": 0,
+      "id": 25
+    },
+    {
+      "name": "Kimura",
+      "typeId": 1,
+      "totalHit": 0,
+      "id": 26
+    },
+    {
+      "name": "Americana",
+      "typeId": 1,
+      "totalHit": 0,
+      "id": 27
+    },
+    {
+      "name": "Kimura Sweep",
+      "typeId": 2,
+      "totalHit": 0,
+      "id": 28
+    },
+    {
+      "name": "Clock Choke",
+      "typeId": 1,
+      "totalHit": 0,
+      "id": 29
     }
   ],
   "techniqueTypes": [
@@ -187,21 +321,33 @@
   ],
   "techniqueHistory": [
     {
-      "techniqueId": 3,
+      "techniqueId": 1,
       "userId": 2,
       "priority": true,
       "id": 1
     },
     {
-      "techniqueId": 4,
+      "techniqueId": 2,
       "userId": 2,
       "priority": true,
       "id": 2
     },
     {
-      "techniqueId": 7,
+      "techniqueId": 3,
       "userId": 2,
       "priority": true,
+      "id": 3
+    },
+    {
+      "techniqueId": 5,
+      "userId": 2,
+      "priority": false,
+      "id": 4
+    },
+    {
+      "techniqueId": 4,
+      "userId": 2,
+      "priority": false,
       "id": 5
     },
     {
@@ -211,52 +357,10 @@
       "id": 6
     },
     {
-      "techniqueId": 1,
+      "techniqueId": 7,
       "userId": 2,
       "priority": false,
       "id": 7
-    },
-    {
-      "techniqueId": 5,
-      "userId": 2,
-      "priority": false,
-      "id": 8
-    },
-    {
-      "techniqueId": 1,
-      "userId": 3,
-      "priority": true,
-      "id": 9
-    },
-    {
-      "techniqueId": 2,
-      "userId": 3,
-      "priority": true,
-      "id": 10
-    },
-    {
-      "techniqueId": 3,
-      "userId": 3,
-      "priority": false,
-      "id": 11
-    },
-    {
-      "techniqueId": 4,
-      "userId": 3,
-      "priority": false,
-      "id": 12
-    },
-    {
-      "techniqueId": 8,
-      "userId": 3,
-      "priority": true,
-      "id": 13
-    },
-    {
-      "techniqueId": 6,
-      "userId": 3,
-      "priority": true,
-      "id": 14
     }
   ],
   "techniqueHit": []

@@ -7,9 +7,6 @@ import ApiManager from '../../modules/ApiManager'
 const TechniqueCard = props => {
 
     const handlePriorityChange = (event) => {
-        console.log('checkbox', event.target.value)
-        console.log('id', event.target.id)
-        console.log('prop check', props.relationship)
 
         let editRelationship = {}
         if (props.trace === 'home') {
@@ -33,7 +30,6 @@ const TechniqueCard = props => {
         
         editRelationship.priority ? editRelationship.priority = false : editRelationship.priority = true
         ApiManager.editObject('techniqueHistory', editRelationship)
-            .then(result => console.log('after edit',result))
             .then(() => {
                 
                props.trace === 'home' ? props.getAndSetPriorityTechs() : props.getAndSetAllTechs()

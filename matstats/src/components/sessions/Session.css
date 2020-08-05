@@ -42,3 +42,12 @@
 .session__detail--technique {
     margin: 1rem;
 }
+
+.STS__Card--container {
+    display: flex;
+    flex-flow: wrap;
+}
+
+.STS__Card {
+    margin: .1rem;
+}

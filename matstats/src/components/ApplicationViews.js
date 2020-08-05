@@ -38,7 +38,10 @@ const ApplicationViews = (props) => {
                     exact path="/"
                     render={props => {
                         if(hasUser) {
-                            return <Home {...props}/>
+                            return <Home 
+                                        formatDates={formatDates}
+                                        {...props}                                        
+                                    />
                         } else {
                             return <Redirect to='/login' />
                         }

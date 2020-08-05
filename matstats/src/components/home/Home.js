@@ -1,8 +1,33 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
+import ApiManager from '../../modules/ApiManager'
+import {Link} from 'react-router-dom'
 
 const Home = props => {
+    const [mostRecent, setMostRecent] = useState({userId:'', notes: '', date:'', length:'', sessionTypeId:'', id:''})
+    const [isLoading, setIsLoading] = useState(true)
+    const [date, setDate] = useState()
 
+    const getAndSetSession = () => {
+        ApiManager.getEmbedded('users', sessionStorage.credentials, 'sessions')
+            .then(results => sortSessions(results.sessions))
+            .then(sortedResults => {
+                setMostRecent(sortedResults[0])
+                setDate(props.formatDates(sortedResults[0].date))
+            })
+    }
+
+    
+    const sortSessions = (array) => {
+        return array.sort((session1, session2) => new Date(session2.date) - new Date(session1.date))        
+    }
+
+    useEffect(() => {
+        getAndSetSession()
+        setIsLoading(false)
+    }, [])
+   
 
     return (
         <>
@@ -25,19 +50,22 @@ const Home = props => {
                     </Card.Body>
 
                 </Card>
-                <Card className="home__box">
-                    <Card.Header className="home__session--header">
-                        <div>
-                            24 July, 2020
-                        </div>
-                        <div>
-                            Length: 2 hours
-                        </div>
+               { isLoading ? ''
+                :<Card className="session__preview--card">
+                    <Card.Header className="session__preview--header">
+                    <Card className="session__preview--date">
+                        {date}
+                    </Card>
+                    <Link to={`/sessions/${mostRecent.id}`}>
+                        <Button>
+                            Details
+                        </Button>
+                    </Link>
                     </Card.Header>
-                    <Card.Body className="home__session--body">
-                        Operation Hot Mother. I'm afraid I'm with Michael on this one. The guy runs a prison, he can have any piece of ass he wants. He's a regular Freddie Wilson, that one. Oh, I can just taste those meaty leading man parts in my mouth. I didn't mean who… I meant… her?
+                    <Card.Body>
+                    {mostRecent.notes}
                     </Card.Body>
-                </Card>
+                </Card>}
             </div>
         </>
     )

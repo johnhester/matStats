@@ -44,6 +44,7 @@ const SessionHome = props => {
                         key={session.id}
                         session={session}
                         formatDates={props.formatDates}
+                        {...props}
                     />
                 )}
 
