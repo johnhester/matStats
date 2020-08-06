@@ -5,9 +5,12 @@ import ApiManager from '../../modules/ApiManager'
 import {Link} from 'react-router-dom'
 
 const Home = props => {
+    // session stuff
     const [mostRecent, setMostRecent] = useState({userId:'', notes: '', date:'', length:'', sessionTypeId:'', id:''})
     const [isLoading, setIsLoading] = useState(true)
     const [date, setDate] = useState()
+    //technique stuff
+    const [favTechs, setFavTechs] = useState([])
 
     const getAndSetSession = () => {
         ApiManager.getEmbedded('users', sessionStorage.credentials, 'sessions')
@@ -18,6 +21,18 @@ const Home = props => {
             })
     }
 
+    const getPriorities = () => {
+        ApiManager.getPriorityTechniques(sessionStorage.credentials)
+            .then(results => {
+                let techs = []
+                results.map(result => 
+                    result.priority === true ? techs.push(result.technique) : ''    
+                )
+                setFavTechs(techs)
+                console.log('techs', techs)
+            })
+    }
+
     
     const sortSessions = (array) => {
         return array.sort((session1, session2) => new Date(session2.date) - new Date(session1.date))        
@@ -25,6 +40,7 @@ const Home = props => {
 
     useEffect(() => {
         getAndSetSession()
+        getPriorities()
         setIsLoading(false)
     }, [])
    
@@ -35,21 +51,17 @@ const Home = props => {
                 <Card className="home__box">
                     <Card.Header>Priority Techniques:</Card.Header>
                     <Card.Body className="home__techniques">
-                        <Card className="home__techniques--card">
-                            arm-bar
-                        </Card>
-                        <Card className="home__techniques--card">
-                            triangle
-                        </Card>
-                        <Card className="home__techniques--card">
-                            Full Guard
-                        </Card>
-                        <Card className="home__techniques--card">
-                            Scissor Sweep
-                        </Card>
+                        {favTechs.map(fav => 
+                            <Link to={`/techniques/${fav.id}`} >
+                                <Card key={fav.id} className="home__techniques--card">
+                                    {fav.name}
+                                </Card>
+                            </Link>
+                        )}
                     </Card.Body>
 
                 </Card>
+                <h5>Your most recent session:</h5>
                { isLoading ? ''
                 :<Card className="session__preview--card">
                     <Card.Header className="session__preview--header">
