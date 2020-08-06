@@ -8,6 +8,12 @@ import SessionTechSearch from './SessionTechSearch'
 const SessionForm = props => {
 
     const [types, setTypes] = useState([])
+    const [techniques, setTechniques] = useState([])
+
+    const getTechs = () => {
+        ApiManager.getAll('techniques')
+            .then(results => setTechniques(results))
+    }
 
     const getSessionTypes = () => {
         ApiManager.getAll('sessionTypes')
@@ -16,6 +22,7 @@ const SessionForm = props => {
 
     useEffect(() => {
         getSessionTypes()
+        getTechs()
     },[])
 
     return (
@@ -28,7 +35,7 @@ const SessionForm = props => {
                             required
                             onChange={props.handleFieldChange}
                             id='date'
-                            value={props.action === 'edit' ? props.session.date.slice(0,10) : ''}
+                            value={props.action === 'edit' ? props.session.date.slice(0,10) : undefined}
                         />                        
                     </Form.Group>
                     <Form.Group>
@@ -38,7 +45,7 @@ const SessionForm = props => {
                             onChange={props.handleFieldChange}
                             id='length'
                             placeholder='in hours'
-                            value={props.action === 'edit' ? props.session.length : null}
+                            value={props.action === 'edit' ? props.session.length : undefined}
                         />
                     </Form.Group>
                     <Form.Group>
@@ -48,7 +55,7 @@ const SessionForm = props => {
                             id="sessionTypeId"
                             onChange={props.handleFieldChange}
                             required
-                            value={props.action === 'edit' ? props.session.sessionTypeId : null}
+                            value={props.action === 'edit' ? props.session.sessionTypeId : undefined}
                         >
                             <option value="0">pick one</option>
                             {types.map(type => 
@@ -62,7 +69,10 @@ const SessionForm = props => {
                         </Form.Control>
                     </Form.Group>
                     <SessionTechSearch 
-
+                        techniques={techniques}
+                        setTechniques={setTechniques}
+                        handleSecondaryFieldChange={props.handleSecondaryFieldChange}
+                        secondaryData={props.secondaryData}
                         {...props}
                     />
                     <Form.Group>
@@ -73,7 +83,7 @@ const SessionForm = props => {
                             placeholder='How did it go?'
                             onChange={props.handleFieldChange}
                             required
-                            value={props.action === 'edit' ? props.session.notes : null}
+                            value={props.action === 'edit' ? props.session.notes : undefined}
                         />
                     </Form.Group>
                     <Form.Group className="session__form--buttons">

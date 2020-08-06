@@ -1,31 +1,52 @@
 import React, {useEffect, useState} from 'react'
 import Form from 'react-bootstrap/Form'
 import ApiManager from '../../modules/ApiManager'
+import STSButton from './STSButton'
 import STSCard from './STSCard'
 
 
 const SessionTechSearch = props => {
-    const [techniques, setTechniques] = useState([])
+    //search related states
+    
     const [search, setSearch] = useState('')
     const [filteredTechniques, setFilteredTechniques] = useState([])
-    const [select, SetSelect] = useState({})
+    //dynamic form related states
+    const [techsClicked, setTechsClicked] = useState([])
+    const [usedTechs, setUsedTechs] = useState([])
 
-    const getTechs = () => {
-        ApiManager.getAll('techniques')
-            .then(results => setTechniques(results))
+
+
+    const addTechsUsed = (event) => {
+        let flag
+        flag = techsClicked.includes(parseInt(event.target.value))
+        if (!flag) {
+            setTechsClicked([...techsClicked, parseInt(event.target.value)])
+        } 
+    }
+    
+    const filterClicked = () => {
+        //iterates through techniques to see if any of them were clicked
+        props.techniques.forEach(tech => {
+            let flag             
+            flag = techsClicked.includes(tech.id)
+            if(flag) {setUsedTechs([...usedTechs, tech])} 
+
+        })
     }
 
-    useEffect(() => {
-        getTechs()
-    }, [])
+   
 
     useEffect(() => {
         setFilteredTechniques(
-            techniques.filter(tech =>
+            props.techniques.filter(tech =>
                 tech.name.toLowerCase().includes(search.toLowerCase())    
             )
-        )
+        )        
     },[search])
+
+    useEffect(() => {
+        filterClicked()
+    }, [techsClicked])
 
     return (
         <>
@@ -37,17 +58,31 @@ const SessionTechSearch = props => {
                     onChange={event => setSearch(event.target.value)}
                 />
             </Form.Group>
-            <div className="STS__Card--container">
+            <div className="STS__Button--container">
                 {filteredTechniques.map(tech => 
                     search === '' ? ''
                     : 
-                    <STSCard
+                    <STSButton
                         key={tech.id}
                         technique={tech}
+                        addTechsUsed={addTechsUsed}
                         {...props}
                     />
                 )}
             </div>
+            <div className="STS__Card--container">
+            {usedTechs.map((tech, index) => 
+                <STSCard 
+                    key={tech.id}
+                    tech={tech}
+                    index={index}
+                    handleSecondaryFieldChange={props.handleSecondaryFieldChange}
+                    secondaryData={props.secondaryData}
+                    {...props}
+                />                
+            )}
+            </div>
+
         </>
     )
 }

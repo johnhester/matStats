@@ -7,7 +7,7 @@ const SessionNew = props => {
 
     
     const [newSession, setNewSession] = useState({userId:"", notes:"", date:"", length:"", sessionTypeId:""})
-
+    const [secondaryData, setSecondaryData] = useState([{}])
 
 
     const handleFieldChange = (event) => {
@@ -16,8 +16,16 @@ const SessionNew = props => {
         setNewSession(stateToChange)
     }
 
+    const handleSecondaryFieldChange = (event) => {
+        const updatedData = {...secondaryData}
+        updatedData[event.target.dataset.idx][event.target.name] = parseInt(event.target.value)
+        updatedData[event.target.dataset.idx]['id'] = parseInt(event.target.id)
+        setSecondaryData(updatedData)
+        console.log('secondaryData', updatedData)
+    }
+
     const constructNewSession = (event) => {
-        event.preventDefault()        
+        event.preventDefault()       
         const sessionObj = newSession
 
         if (isNaN(newSession.length)) {
@@ -34,6 +42,8 @@ const SessionNew = props => {
 
     }
 
+    
+
    
     return (
         <>  
@@ -44,6 +54,8 @@ const SessionNew = props => {
                 <SessionForm 
                     handleFieldChange={handleFieldChange}
                     constructNewSession={constructNewSession}
+                    handleSecondaryFieldChange={handleSecondaryFieldChange}
+                    secondaryData={secondaryData}
                     {...props}
                     comeBack='sessions'
                     action='new'

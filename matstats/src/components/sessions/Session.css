@@ -43,11 +43,38 @@
     margin: 1rem;
 }
 
-.STS__Card--container {
+.STS__Button--container {
     display: flex;
     flex-flow: wrap;
 }
 
-.STS__Card {
+.STS__Button {
     margin: .1rem;
+}
+
+.STS__Card {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: baseline;
+    justify-content: space-evenly;
+    margin: .2rem;
+    width: 80%;
+}
+
+.STS__Card--container {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    padding: .5rem .3rem;
+}
+
+.STS__Card--input {
+    margin: .2rem;
+}
+
+.STS__Card--inputBox {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-evenly;
+    margin: .2rem;
 }

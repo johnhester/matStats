@@ -62,9 +62,7 @@ const TechniqueSearch = props => {
 
         ApiManager.getSinglePriority(eventId, userCred)
             .then( result => {
-                console.log('result', result)
                 check = result[0]
-                console.log('check 1', check)
                 return check
             }).then( result => {
     
