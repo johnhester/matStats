@@ -29,7 +29,6 @@ const Home = props => {
                     result.priority === true ? techs.push(result.technique) : ''    
                 )
                 setFavTechs(techs)
-                console.log('techs', techs)
             })
     }
 
@@ -52,8 +51,8 @@ const Home = props => {
                     <Card.Header>Priority Techniques:</Card.Header>
                     <Card.Body className="home__techniques">
                         {favTechs.map(fav => 
-                            <Link to={`/techniques/${fav.id}`} >
-                                <Card key={fav.id} className="home__techniques--card">
+                            <Link key={fav.id} to={`/techniques/${fav.id}`} >
+                                <Card  className="home__techniques--card">
                                     {fav.name}
                                 </Card>
                             </Link>
