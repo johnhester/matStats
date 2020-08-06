@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import ApiManager from '../../modules/ApiManager'
 import SessionForm from './SessionForm'
@@ -7,7 +7,13 @@ const SessionNew = props => {
 
     
     const [newSession, setNewSession] = useState({userId:"", notes:"", date:"", length:"", sessionTypeId:""})
+    const [techniques, setTechniques] = useState([])
     const [secondaryData, setSecondaryData] = useState([{}])
+
+    const getTechs = () => {
+        ApiManager.getAll('techniques')
+            .then(results => setTechniques(results))
+    }
 
 
     const handleFieldChange = (event) => {
@@ -36,13 +42,35 @@ const SessionNew = props => {
             sessionObj.userId = parseInt(sessionStorage.credentials, 10)
             sessionObj.length = parseFloat(sessionObj.length, 10)
             ApiManager.addObject('sessions', sessionObj)
+                .then(newSession => techniqueHit(newSession.id))
                 .then(() => props.history.push('/sessions'))
         }
                
 
     }
 
-    
+    const techniqueHit = (newSessionId) => {
+        secondaryData.forEach(item => {
+            const obj = {
+                techniqueId: item.id,
+                sessionId: newSessionId,
+                usedInSession: item.totalHit
+            }
+
+            ApiManager.addObject('techniqueHit', obj)
+                .then(resultObj => console.log('result obj', resultObj))
+
+        })
+        
+    }
+
+    const editTechnique = () => {
+
+    }
+
+    useEffect(() => {
+        getTechs()
+    }, [])
 
    
     return (
@@ -56,6 +84,8 @@ const SessionNew = props => {
                     constructNewSession={constructNewSession}
                     handleSecondaryFieldChange={handleSecondaryFieldChange}
                     secondaryData={secondaryData}
+                    techniques={techniques}
+                    setTechniques={setTechniques}
                     {...props}
                     comeBack='sessions'
                     action='new'

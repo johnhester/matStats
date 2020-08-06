@@ -37,7 +37,7 @@ const SessionEdit = props => {
                 setSession(results)
                 setIsLoading(false)
             })
-    }, [])
+    }, [props.match.params.sessionId])
 
     return (
         <>

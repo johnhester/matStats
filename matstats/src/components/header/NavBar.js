@@ -1,10 +1,6 @@
 import React from 'react'
 import Navbar from 'react-bootstrap/Navbar'
-import {Nav, Col} from 'react-bootstrap'
-import Accordion from 'react-bootstrap/Accordion'
-import { useAccordionToggle } from 'react-bootstrap/AccordionToggle'
-import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
+import {Nav} from 'react-bootstrap'
 import NavDropDown from 'react-bootstrap/Dropdown'
 
 const NavBar = (props) => {
@@ -12,24 +8,11 @@ const NavBar = (props) => {
     const handleLogout = () => {
         props.clearUser()
     }
-//for accordion menu
-    const CustomToggle = ({children, eventKey}) => {
-        const decoratedOnClick = useAccordionToggle(eventKey);
 
-        return (
-            <button
-                type="button"
-                style={{ backgroundColor: 'EAE0D5' }}
-                onClick={decoratedOnClick}
-            >
-            {children}
-            </button>
-        );
-}
 
 // Bastard creation of accordion, navbar, and card bootstrap css
     return (
-        <Navbar collapseOnSelect expand='lg' bg='dark' variant="dark" fixed="top" className="header">
+        <Navbar collapseOnSelect expand='lg' bg='black' variant="dark" fixed="top" className="header">
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Brand className="header__text">matStats</Navbar.Brand>            
             <div className="header__text">

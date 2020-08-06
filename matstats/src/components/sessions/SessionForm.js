@@ -8,12 +8,9 @@ import SessionTechSearch from './SessionTechSearch'
 const SessionForm = props => {
 
     const [types, setTypes] = useState([])
-    const [techniques, setTechniques] = useState([])
+    
 
-    const getTechs = () => {
-        ApiManager.getAll('techniques')
-            .then(results => setTechniques(results))
-    }
+    
 
     const getSessionTypes = () => {
         ApiManager.getAll('sessionTypes')
@@ -22,7 +19,6 @@ const SessionForm = props => {
 
     useEffect(() => {
         getSessionTypes()
-        getTechs()
     },[])
 
     return (
@@ -69,8 +65,8 @@ const SessionForm = props => {
                         </Form.Control>
                     </Form.Group>
                     <SessionTechSearch 
-                        techniques={techniques}
-                        setTechniques={setTechniques}
+                        techniques={props.techniques}
+                        setTechniques={props.setTechniques}
                         handleSecondaryFieldChange={props.handleSecondaryFieldChange}
                         secondaryData={props.secondaryData}
                         {...props}

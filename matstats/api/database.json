@@ -93,6 +93,14 @@
       "length": "1.5",
       "sessionTypeId": "3",
       "id": 10
+    },
+    {
+      "userId": 2,
+      "notes": "well",
+      "date": "2020-07-30",
+      "length": 1,
+      "sessionTypeId": "1",
+      "id": 11
     }
   ],
   "sessionTypes": [
