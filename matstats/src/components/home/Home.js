@@ -17,7 +17,10 @@ const Home = props => {
             .then(results => sortSessions(results.sessions))
             .then(sortedResults => {
                 setMostRecent(sortedResults[0])
-                setDate(props.formatDates(sortedResults[0].date))
+                if(sortedResults[0] !== undefined) {
+                    setDate(props.formatDates(sortedResults[0].date))
+                }
+                
             })
     }
 
@@ -42,7 +45,7 @@ const Home = props => {
         getPriorities()
         setIsLoading(false)
     }, [])
-   
+    
 
     return (
         <>
@@ -50,7 +53,9 @@ const Home = props => {
                 <Card className="home__box">
                     <Card.Header>Priority Techniques:</Card.Header>
                     <Card.Body className="home__techniques">
-                        {favTechs.map(fav => 
+                        {favTechs[0] === undefined ?
+                            <p>You haven't chosen any techniques yet.</p>
+                            : favTechs.map(fav => 
                             <Link key={fav.id} to={`/techniques/${fav.id}`} >
                                 <Card  className="home__techniques--card">
                                     {fav.name}
@@ -61,7 +66,10 @@ const Home = props => {
 
                 </Card>
                 <h5>Your most recent session:</h5>
-               { isLoading ? ''
+               { mostRecent === undefined ? 
+                    <Card>
+                        You haven't logged any sessions yet.
+                    </Card>
                 :<Card className="session__preview--card">
                     <Card.Header className="session__preview--header">
                     <Card className="session__preview--date">

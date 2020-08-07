@@ -73,10 +73,8 @@ const TechniqueSearch = props => {
                         "priority": eventVal
                     }
                     
-                    console.log('eventVal', eventVal)
                     
                         editRelationship.id = check.id
-                        console.log('edit relationship', editRelationship)
                         ApiManager.editObject('techniqueHistory', editRelationship)
                         
                 } else {

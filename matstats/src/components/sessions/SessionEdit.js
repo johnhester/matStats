@@ -11,7 +11,8 @@ const SessionEdit = props => {
     const blankData = {id:'', usedInSession:'', techniqueId:''}
     const [techData, setTechData] = useState([{...blankData}])
 
-    
+    let count = 0
+
     // makes the initial call for session and techniques
     const initializeEdit = () => {
         ApiManager.getEmbedded('sessions', props.match.params.sessionId,'techniqueHit')
@@ -91,8 +92,11 @@ const SessionEdit = props => {
         let sessionTechDetails = []
         //skim ids from session array
         dataArr.forEach(obj => {
+            console.log('before edit slot', techData)
+            count++
             techIds.push(obj.techniqueId)
             hitIds.push(obj.id)
+            console.log('after edit slot', techData)
         })
         //skims technique list for technique ids used
         techArr.forEach(tech => {
@@ -113,14 +117,16 @@ const SessionEdit = props => {
             sessionTechDetails.push(tacoObj)
         })
         setTechDetails(sessionTechDetails)
-        for(let i=0; i < dataArr.length; i++) {
-            addEditSlot()
-        }
+        
     }
 
     useEffect(() => {
         initializeEdit()
     }, [props.match.params.sessionId]) 
+
+    useEffect(() => {
+        addEditSlot()
+    },[count])
 
     return (
         <>
@@ -128,6 +134,11 @@ const SessionEdit = props => {
                 <Jumbotron>
                     <h3>Edit Session information</h3>
                 </Jumbotron>
+                <button
+                    onClick={addEditSlot}
+                >
+                    generate box
+                </button>
                 { isLoading ? 'Loading Form'
                 :
                 <SessionForm 

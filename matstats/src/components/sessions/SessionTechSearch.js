@@ -19,12 +19,10 @@ const SessionTechSearch = props => {
     const addTechsUsed = (event) => {
         let flag
         flag = techsClicked.includes(parseInt(event.target.value))
-        console.log('button clicked', event.target.value)
         if (!flag) {
             props.addDataSlot()
             setTechsClicked([...techsClicked, parseInt(event.target.value)])
         } 
-        console.log('techs clicked', techsClicked)
     }
     
     const filterClicked = () => {

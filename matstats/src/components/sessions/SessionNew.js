@@ -59,8 +59,7 @@ const SessionNew = props => {
                     sessionId: newSessionId,
                     usedInSession: item.totalHit
                 }                
-                ApiManager.addObject('techniqueHit', obj)
-                    .then(resultObj => console.log('result obj', resultObj))    
+                ApiManager.addObject('techniqueHit', obj) 
             }
         })
     }

@@ -73,18 +73,17 @@ const SessionDetail = props => {
                     removeTechniquesHit(dataObj)
                 )
             }).then(() => {
-                techData.forEach(obj => 
+                techData.forEach(obj => {
+                    console.log('obj', obj)
                     ApiManager.deleteObject('techniqueHit', obj.id)
-                )
+                })
             })
     }
 
     const removeTechniquesHit = (dataObj) => {
-        ApiManager.getEmbedded('techniques', dataObj.id)
+        ApiManager.getEmbedded('techniques', dataObj.technique.id,'')
             .then(techObj => {
-                console.log('before subtraction', techObj.totalHit)
                 techObj.totalHit -= dataObj.usedInSession
-                console.log('after subtraction', techObj.totalHit)
                 ApiManager.editObject('techniques', techObj)
             })
         

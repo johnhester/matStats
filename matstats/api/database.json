@@ -35,6 +35,24 @@
       "email": "email@domain.com",
       "password": "asdf",
       "id": 6
+    },
+    {
+      "username": "rollingRabbit",
+      "email": "carrots@bunbun.com",
+      "password": "asdf",
+      "id": 7
+    },
+    {
+      "username": "bjork",
+      "email": "bjork@bjork.com",
+      "password": "asdf",
+      "id": 8
+    },
+    {
+      "username": "Brenda",
+      "email": "gary@gary.com",
+      "password": "asdf",
+      "id": 9
     }
   ],
   "sessions": [
@@ -96,27 +114,51 @@
     },
     {
       "userId": 2,
-      "notes": "asdf",
+      "notes": "actually went pretty well",
       "date": "2020-08-05T00:00:00.000Z",
       "length": 3,
-      "sessionTypeId": "3",
-      "id": 15
+      "sessionTypeId": 3,
+      "id": 17
     },
     {
       "userId": 2,
-      "notes": "awesome",
-      "date": "2020-08-05T00:00:00.000Z",
+      "notes": "asdfadsf",
+      "date": "2020-08-06T00:00:00.000Z",
+      "length": 3,
+      "sessionTypeId": 3,
+      "id": 20
+    },
+    {
+      "userId": 2,
+      "notes": "dadfadfasdf",
+      "date": "2020-07-27",
+      "length": 1,
+      "sessionTypeId": "2",
+      "id": 21
+    },
+    {
+      "userId": 2,
+      "notes": "felt pretty good ",
+      "date": "2020-08-14T00:00:00.000Z",
       "length": 2,
       "sessionTypeId": 3,
-      "id": 16
+      "id": 22
     },
     {
-      "userId": 2,
-      "notes": "awful",
-      "date": "2020-08-05",
-      "length": 3,
+      "userId": 7,
+      "notes": "I got smashed.",
+      "date": "2020-08-07",
+      "length": 2,
+      "sessionTypeId": "3",
+      "id": 23
+    },
+    {
+      "userId": 8,
+      "notes": "dskdsakl;asdkl",
+      "date": "2020-08-14",
+      "length": 2,
       "sessionTypeId": "2",
-      "id": 17
+      "id": 24
     }
   ],
   "sessionTypes": [
@@ -137,31 +179,31 @@
     {
       "name": "Triangle",
       "typeId": 1,
-      "totalHit": 26,
+      "totalHit": 35,
       "id": 1
     },
     {
       "name": "Rear-Naked-Choke",
       "typeId": 1,
-      "totalHit": 16,
+      "totalHit": 21,
       "id": 2
     },
     {
       "name": "Arm Triangle",
       "typeId": 1,
-      "totalHit": 3,
+      "totalHit": 4,
       "id": 3
     },
     {
       "name": "Flower Sweep",
       "typeId": 2,
-      "totalHit": 0,
+      "totalHit": 3,
       "id": 4
     },
     {
       "name": "Half-Guard",
       "typeId": 5,
-      "totalHit": 0,
+      "totalHit": 2,
       "id": 5
     },
     {
@@ -179,25 +221,25 @@
     {
       "name": "De La Riva",
       "typeId": 5,
-      "totalHit": 0,
+      "totalHit": 6,
       "id": 8
     },
     {
       "name": "Calf Slicer",
       "typeId": 1,
-      "totalHit": 0,
+      "totalHit": 4,
       "id": 9
     },
     {
       "name": "Elevator Sweep",
       "typeId": 2,
-      "totalHit": 0,
+      "totalHit": 3,
       "id": 10
     },
     {
       "name": "Deep-Half Guard",
       "typeId": 5,
-      "totalHit": 0,
+      "totalHit": 2,
       "id": 11
     },
     {
@@ -227,13 +269,13 @@
     {
       "name": "X Pass",
       "typeId": 6,
-      "totalHit": 0,
+      "totalHit": 3,
       "id": 16
     },
     {
       "name": "Over-under Pass",
       "typeId": 6,
-      "totalHit": 0,
+      "totalHit": 5,
       "id": 17
     },
     {
@@ -281,7 +323,7 @@
     {
       "name": "Electric Chair ",
       "typeId": 2,
-      "totalHit": 0,
+      "totalHit": 2,
       "id": 25
     },
     {
@@ -305,8 +347,14 @@
     {
       "name": "Clock Choke",
       "typeId": 1,
-      "totalHit": 0,
+      "totalHit": 1,
       "id": 29
+    },
+    {
+      "name": "Straight Ankle Lock",
+      "typeId": "1",
+      "totalHit": 1,
+      "id": 30
     }
   ],
   "techniqueTypes": [
@@ -365,7 +413,7 @@
     {
       "techniqueId": 5,
       "userId": 2,
-      "priority": false,
+      "priority": true,
       "id": 4
     },
     {
@@ -385,50 +433,170 @@
       "userId": 2,
       "priority": false,
       "id": 7
+    },
+    {
+      "techniqueId": 13,
+      "userId": 2,
+      "priority": true,
+      "id": 8
+    },
+    {
+      "techniqueId": 30,
+      "userId": 2,
+      "priority": true,
+      "id": 9
+    },
+    {
+      "techniqueId": 1,
+      "userId": 7,
+      "priority": true,
+      "id": 10
+    },
+    {
+      "techniqueId": 2,
+      "userId": 7,
+      "priority": true,
+      "id": 11
+    },
+    {
+      "techniqueId": 3,
+      "userId": 7,
+      "priority": true,
+      "id": 12
+    },
+    {
+      "techniqueId": 1,
+      "userId": 8,
+      "priority": true,
+      "id": 13
+    },
+    {
+      "techniqueId": 2,
+      "userId": 8,
+      "priority": true,
+      "id": 14
+    },
+    {
+      "techniqueId": 3,
+      "userId": 8,
+      "priority": true,
+      "id": 15
+    },
+    {
+      "techniqueId": 2,
+      "userId": 9,
+      "priority": true,
+      "id": 16
+    },
+    {
+      "techniqueId": 1,
+      "userId": 9,
+      "priority": true,
+      "id": 17
+    },
+    {
+      "techniqueId": 3,
+      "userId": 9,
+      "priority": false,
+      "id": 18
+    },
+    {
+      "techniqueId": 4,
+      "userId": 9,
+      "priority": true,
+      "id": 19
+    },
+    {
+      "techniqueId": 11,
+      "userId": 9,
+      "priority": true,
+      "id": 20
+    },
+    {
+      "techniqueId": 10,
+      "userId": 9,
+      "priority": true,
+      "id": 21
     }
   ],
   "techniqueHit": [
     {
-      "techniqueId": 2,
-      "sessionId": 15,
-      "usedInSession": 1,
-      "id": 1
-    },
-    {
-      "techniqueId": 1,
-      "sessionId": 15,
-      "usedInSession": 13,
-      "id": 2
-    },
-    {
-      "techniqueId": 3,
-      "sessionId": 15,
-      "usedInSession": 3,
-      "id": 3
-    },
-    {
-      "techniqueId": 1,
-      "sessionId": 16,
-      "usedInSession": 2,
-      "id": 4
-    },
-    {
-      "techniqueId": 2,
-      "sessionId": 16,
-      "usedInSession": 4,
-      "id": 5
-    },
-    {
       "techniqueId": 20,
       "sessionId": 17,
-      "usedInSession": 1,
+      "usedInSession": 3,
       "id": 6
     },
     {
       "techniqueId": 21,
       "sessionId": 17,
-      "usedInSession": 3,
+      "usedInSession": 1,
       "id": 7
+    },
+    {
+      "techniqueId": 25,
+      "sessionId": 20,
+      "usedInSession": 3,
+      "id": 12
+    },
+    {
+      "techniqueId": 29,
+      "sessionId": 20,
+      "usedInSession": 2,
+      "id": 13
+    },
+    {
+      "techniqueId": 1,
+      "sessionId": 21,
+      "usedInSession": 1,
+      "id": 14
+    },
+    {
+      "techniqueId": 8,
+      "sessionId": 21,
+      "usedInSession": 1,
+      "id": 15
+    },
+    {
+      "techniqueId": 11,
+      "sessionId": 21,
+      "usedInSession": 1,
+      "id": 16
+    },
+    {
+      "techniqueId": 1,
+      "sessionId": 22,
+      "usedInSession": 4,
+      "id": 17
+    },
+    {
+      "techniqueId": 2,
+      "sessionId": 22,
+      "usedInSession": 2,
+      "id": 18
+    },
+    {
+      "techniqueId": 3,
+      "sessionId": 22,
+      "usedInSession": 2,
+      "id": 19
+    },
+    {
+      "techniqueId": 1,
+      "sessionId": 23,
+      "usedInSession": 2,
+      "id": 20
+    },
+    {
+      "techniqueId": 30,
+      "sessionId": 23,
+      "usedInSession": 1,
+      "id": 21
+    },
+    {
+      "techniqueId": 2,
+      "sessionId": 24,
+      "usedInSession": 1,
+      "id": 22
     }
   ]
 }
