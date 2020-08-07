@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import Home from './home/Home'
 import Login from './authentication/Login'
@@ -11,6 +11,7 @@ import SessionHome from './sessions/SessionHome'
 import SessionNew from './sessions/SessionNew'
 import SessionDetail from './sessions/SessionDetail'
 import SessionEdit from './sessions/SessionEdit'
+import ApiManager from '../modules/ApiManager'
 
 
 const ApplicationViews = (props) => {
@@ -27,7 +28,15 @@ const ApplicationViews = (props) => {
          return dateFormat.format(new Date(sessionDate))        
 
     }
-
+// gets all techinques
+    const [techniques, setTechniques] = useState([])
+    const getTechs = () => {
+        ApiManager.getAll('techniques')
+            .then(results => setTechniques(results))
+    }
+    useEffect(() => {
+        getTechs()
+    }, [])
 
 
 
@@ -131,7 +140,10 @@ const ApplicationViews = (props) => {
                     exact path="/newsession"
                     render={props => {
                         if(hasUser) {
-                            return <SessionNew {...props}/>
+                            return <SessionNew 
+                                        techniques={techniques}
+                                        {...props}
+                                    />
                         } else {
                             return <Redirect to='/login' />
                         }
@@ -145,6 +157,7 @@ const ApplicationViews = (props) => {
                             return <SessionDetail 
                                         sessionId={parseInt(props.match.params.sessionId)}
                                         formatDates={formatDates}
+                                        techniques={techniques}
                                         {...props}
                                     />
                         } else {
@@ -158,6 +171,7 @@ const ApplicationViews = (props) => {
                     render={props => {
                         if(hasUser) {
                             return <SessionEdit
+                                        techniques={techniques}
                                         {...props}
                                     />
                         } else {

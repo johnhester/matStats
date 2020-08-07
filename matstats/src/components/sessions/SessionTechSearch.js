@@ -6,7 +6,7 @@ import STSCard from './STSCard'
 
 
 const SessionTechSearch = props => {
-    //search related states
+    //search related states 
     
     const [search, setSearch] = useState('')
     const [filteredTechniques, setFilteredTechniques] = useState([])
@@ -19,9 +19,12 @@ const SessionTechSearch = props => {
     const addTechsUsed = (event) => {
         let flag
         flag = techsClicked.includes(parseInt(event.target.value))
+        console.log('button clicked', event.target.value)
         if (!flag) {
+            props.addDataSlot()
             setTechsClicked([...techsClicked, parseInt(event.target.value)])
         } 
+        console.log('techs clicked', techsClicked)
     }
     
     const filterClicked = () => {
@@ -33,7 +36,6 @@ const SessionTechSearch = props => {
 
         })
     }
-
    
 
     useEffect(() => {
@@ -54,7 +56,7 @@ const SessionTechSearch = props => {
                 <Form.Label>Techniques Used/Trained</Form.Label>
                 <Form.Control 
                     type="input"
-                    placeholder="Focus on any techniques?"
+                    placeholder={ props.taco === 'edit' ? "Any techniques you forgot?" : "Focus on any techniques?"}
                     onChange={event => setSearch(event.target.value)}
                 />
             </Form.Group>
@@ -71,11 +73,11 @@ const SessionTechSearch = props => {
                 )}
             </div>
             <div className="STS__Card--container">
-            {usedTechs.map((tech, index) => 
+            {usedTechs.map((tech, idx) => 
                 <STSCard 
                     key={tech.id}
                     tech={tech}
-                    index={index}
+                    idx={idx}
                     handleSecondaryFieldChange={props.handleSecondaryFieldChange}
                     secondaryData={props.secondaryData}
                     {...props}

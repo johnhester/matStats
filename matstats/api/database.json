@@ -96,11 +96,27 @@
     },
     {
       "userId": 2,
-      "notes": "well",
-      "date": "2020-07-30",
-      "length": 1,
-      "sessionTypeId": "1",
-      "id": 11
+      "notes": "asdf",
+      "date": "2020-08-05T00:00:00.000Z",
+      "length": 3,
+      "sessionTypeId": "3",
+      "id": 15
+    },
+    {
+      "userId": 2,
+      "notes": "fucking awesome",
+      "date": "2020-08-05",
+      "length": 2,
+      "sessionTypeId": "3",
+      "id": 16
+    },
+    {
+      "userId": 2,
+      "notes": "awful",
+      "date": "2020-08-05",
+      "length": 3,
+      "sessionTypeId": "2",
+      "id": 17
     }
   ],
   "sessionTypes": [
@@ -121,48 +137,48 @@
     {
       "name": "Triangle",
       "typeId": 1,
-      "totalHit": 0,
+      "totalHit": 26,
       "id": 1
     },
     {
       "name": "Rear-Naked-Choke",
-      "typeId": "1",
-      "totalHit": 0,
+      "typeId": 1,
+      "totalHit": 16,
       "id": 2
     },
     {
       "name": "Arm Triangle",
-      "typeId": "1",
-      "totalHit": 0,
+      "typeId": 1,
+      "totalHit": 3,
       "id": 3
     },
     {
       "name": "Flower Sweep",
-      "typeId": "2",
+      "typeId": 2,
       "totalHit": 0,
       "id": 4
     },
     {
       "name": "Half-Guard",
-      "typeId": "5",
+      "typeId": 5,
       "totalHit": 0,
       "id": 5
     },
     {
       "name": "Scissor Sweep",
-      "typeId": "2",
+      "typeId": 2,
       "totalHit": 0,
       "id": 6
     },
     {
       "name": "Hitch Hike",
-      "typeId": "3",
+      "typeId": 3,
       "totalHit": 0,
       "id": 7
     },
     {
       "name": "De La Riva",
-      "typeId": "5",
+      "typeId": 5,
       "totalHit": 0,
       "id": 8
     },
@@ -371,5 +387,48 @@
       "id": 7
     }
   ],
-  "techniqueHit": []
+  "techniqueHit": [
+    {
+      "techniqueId": 2,
+      "sessionId": 15,
+      "usedInSession": 1,
+      "id": 1
+    },
+    {
+      "techniqueId": 1,
+      "sessionId": 15,
+      "usedInSession": 13,
+      "id": 2
+    },
+    {
+      "techniqueId": 3,
+      "sessionId": 15,
+      "usedInSession": 3,
+      "id": 3
+    },
+    {
+      "techniqueId": 1,
+      "sessionId": 16,
+      "usedInSession": 1,
+      "id": 4
+    },
+    {
+      "techniqueId": 2,
+      "sessionId": 16,
+      "usedInSession": 3,
+      "id": 5
+    },
+    {
+      "techniqueId": 20,
+      "sessionId": 17,
+      "usedInSession": 1,
+      "id": 6
+    },
+    {
+      "techniqueId": 21,
+      "sessionId": 17,
+      "usedInSession": 3,
+      "id": 7
+    }
+  ]
 }

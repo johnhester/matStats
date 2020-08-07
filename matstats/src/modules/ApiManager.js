@@ -53,6 +53,10 @@ export default {
         searchTechniques(search) {
             return fetch(`${remoteURL}/techniques?q=${search}`) 
                     .then(data => data.json())
+        },
+        getAllSessionData(id) {
+            return fetch(`${remoteURL}/sessions/${id}?_expand=sessionType&_embed=techniqueHit`)
+                .then(data => data.json())
         }
 
 }

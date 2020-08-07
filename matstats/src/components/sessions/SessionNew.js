@@ -5,16 +5,17 @@ import SessionForm from './SessionForm'
 
 const SessionNew = props => {
 
-    
+    // collects data from static session form
     const [newSession, setNewSession] = useState({userId:"", notes:"", date:"", length:"", sessionTypeId:""})
-    const [techniques, setTechniques] = useState([])
-    const [secondaryData, setSecondaryData] = useState([{}])
+    // collects data from dynamic form
+    const blankData = {id:"", totalHit:""}
+    const [secondaryData, setSecondaryData] = useState([])
 
-    const getTechs = () => {
-        ApiManager.getAll('techniques')
-            .then(results => setTechniques(results))
+  
+
+    const addDataSlot = () => {
+        setSecondaryData([...secondaryData, {...blankData}])
     }
-
 
     const handleFieldChange = (event) => {
         const stateToChange = {...newSession}
@@ -22,12 +23,11 @@ const SessionNew = props => {
         setNewSession(stateToChange)
     }
 
-    const handleSecondaryFieldChange = (event) => {
-        const updatedData = {...secondaryData}
-        updatedData[event.target.dataset.idx][event.target.name] = parseInt(event.target.value)
-        updatedData[event.target.dataset.idx]['id'] = parseInt(event.target.id)
+    const handleSecondaryFieldChange = (event, idx) => {
+        const updatedData = [...secondaryData]
+        updatedData[idx]['id'] = parseInt(event.target.id)
+        updatedData[idx][event.target.name] = parseInt(event.target.value)
         setSecondaryData(updatedData)
-        console.log('secondaryData', updatedData)
     }
 
     const constructNewSession = (event) => {
@@ -37,12 +37,11 @@ const SessionNew = props => {
         if (isNaN(newSession.length)) {
             alert('Please enter a number for session length.')
         } else {
-
-            //formats date so that it can be sorted later
             sessionObj.userId = parseInt(sessionStorage.credentials, 10)
             sessionObj.length = parseFloat(sessionObj.length, 10)
             ApiManager.addObject('sessions', sessionObj)
                 .then(newSession => techniqueHit(newSession.id))
+                .then(() => getTechsToEdit())
                 .then(() => props.history.push('/sessions'))
         }
                
@@ -50,27 +49,42 @@ const SessionNew = props => {
     }
 
     const techniqueHit = (newSessionId) => {
-        secondaryData.forEach(item => {
-            const obj = {
-                techniqueId: item.id,
-                sessionId: newSessionId,
-                usedInSession: item.totalHit
-            }
-
-            ApiManager.addObject('techniqueHit', obj)
-                .then(resultObj => console.log('result obj', resultObj))
-
-        })
         
+        secondaryData.forEach(item => {
+            if (isNaN(item.totalHit)) {
+                alert('Please enter a number for successfult technique use.')
+            } else {                
+                const obj = {
+                    techniqueId: item.id,
+                    sessionId: newSessionId,
+                    usedInSession: item.totalHit
+                }                
+                ApiManager.addObject('techniqueHit', obj)
+                    .then(resultObj => console.log('result obj', resultObj))    
+            }
+        })
     }
 
-    const editTechnique = () => {
-
+    const getTechsToEdit = () => {
+        const arr = []
+        secondaryData.forEach(item => arr.push(item.id))
+        
+        props.techniques.forEach(tech => {
+            let flag
+            flag = arr.includes(tech.id)
+            if(flag) {editTechCounter(tech)}
+        })
     }
 
-    useEffect(() => {
-        getTechs()
-    }, [])
+    const editTechCounter = (obj) => {
+  
+        secondaryData.forEach(item => 
+            item.id === obj.id ? obj.totalHit += item.totalHit : ''
+        )
+        ApiManager.editObject('techniques', obj)
+    }
+
+    
 
    
     return (
@@ -84,11 +98,10 @@ const SessionNew = props => {
                     constructNewSession={constructNewSession}
                     handleSecondaryFieldChange={handleSecondaryFieldChange}
                     secondaryData={secondaryData}
-                    techniques={techniques}
-                    setTechniques={setTechniques}
+                    addDataSlot={addDataSlot}
                     {...props}
                     comeBack='sessions'
-                    action='new'
+                    taco='new'
                 />
                 
             </div>

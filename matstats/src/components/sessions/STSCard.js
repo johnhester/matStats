@@ -14,12 +14,11 @@ const STSCard = props => {
                 <Form.Label>Successful uses: </Form.Label>
                 <Form.Control
                     className="STS__Card--input"
-                    data-idx={props.index}
+                    data-idx={props.idx}
                     id={props.tech.id}
                     name='totalHit'
-                    onChange={props.handleSecondaryFieldChange}
+                    onChange={event => props.handleSecondaryFieldChange(event, props.idx)}
                     
-                    {...console.log('idx', props.index)}
                 />  
             </Form.Group>
    
