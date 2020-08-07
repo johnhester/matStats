@@ -71,11 +71,12 @@ const SessionForm = props => {
                             {props.techsHit.map((tech, idx) =>
                             <Form.Group key={tech.id}>                                
                                 <Form.Label>
-                                    {tech.technique.name}
+                                    {tech.technique.name} 
                                 </Form.Label>
                                 <Form.Control 
-                                    id={tech.id}
-                                    name="usedInSession"
+                                    id={`techHitId--${tech.id}`}
+                                    name={`techniqueId--${tech.techniqueId}`}
+                                    // className={tech.techniqueId}
                                     defaultValue={tech.usedInSession}
                                     onChange={event => props.handleDynamicFieldChange(event, idx)}
                                 />

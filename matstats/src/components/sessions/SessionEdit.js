@@ -8,8 +8,8 @@ const SessionEdit = props => {
     const [session, setSession] = useState({userId:"", notes:"", date:"", length:"", sessionTypeId:"", id:"", techniqueHit:[]})
     const [isLoading, setIsLoading] = useState(false)
     const [techDetails, setTechDetails] = useState([])
-    const blankData = {id:'', totalHit:''}
-    const [techData, setTechData] = useState([])
+    const blankData = {id:'', usedInSession:'', techniqueId:''}
+    const [techData, setTechData] = useState([{...blankData}])
 
     
     // makes the initial call for session and techniques
@@ -40,8 +40,9 @@ const SessionEdit = props => {
     // handles dynamic input 
     const handleDynamicFieldChange = (event, idx) => {
         const updatedData = [...techData]
-        updatedData[idx]['totalHit'] = event.target.value
-        updatedData[idx]['id'] = event.target.id
+        updatedData[idx]['usedInSession'] = parseInt(event.target.value)
+        updatedData[idx]['id'] = event.target.id.slice(11)
+        updatedData[idx]['techniqueId'] = event.target.name.slice(13)
         setTechData(updatedData)
     }
 
@@ -51,18 +52,36 @@ const SessionEdit = props => {
         setIsLoading(true)
 
         const editedSession = {
-            id: props.match.params.sessionId,
+            id: parseInt(props.match.params.sessionId),
             userId: parseInt(sessionStorage.credentials),
             notes: session.notes,
             date: new Date(session.date),
-            length: session.length,
-            sessionTypeId: session.sessionTypeId
+            length: parseInt(session.length),
+            sessionTypeId: parseInt(session.sessionTypeId)
         }
 
         ApiManager.editObject('sessions', editedSession)
-            .then(() => props.history.push(`/sessions/${props.match.params.sessionId}`))
+            .then(updatedSession => updateTechniqueHit(updatedSession.id))
+            
     }
 
+    const updateTechniqueHit = (sessionId) => {
+        techData.forEach(dataObj => {
+            if (isNaN(dataObj.usedInSession)) {
+                alert('Please only update technique counts with numbers')
+            } else {
+                let obj = {
+                    techniqueId: parseInt(dataObj.techniqueId),
+                    sessionId: parseInt(sessionId),
+                    usedInSession: dataObj.usedInSession,
+                    id: dataObj.id
+                }
+                ApiManager.editObject('techniqueHit', obj)
+                    .then(() => props.history.push(`/sessions/${props.match.params.sessionId}`))
+            }
+
+        })
+    }
 
     //gets techniqueHit objects with an expanded technique session
     const getFullTechDetails = (dataArr, techArr) => {
@@ -72,7 +91,6 @@ const SessionEdit = props => {
         let sessionTechDetails = []
         //skim ids from session array
         dataArr.forEach(obj => {
-            addEditSlot()
             techIds.push(obj.techniqueId)
             hitIds.push(obj.id)
         })
@@ -102,7 +120,6 @@ const SessionEdit = props => {
 
     useEffect(() => {
         initializeEdit()
-
     }, [props.match.params.sessionId]) 
 
     return (

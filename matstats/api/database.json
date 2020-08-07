@@ -104,10 +104,10 @@
     },
     {
       "userId": 2,
-      "notes": "fucking awesome",
-      "date": "2020-08-05",
+      "notes": "awesome",
+      "date": "2020-08-05T00:00:00.000Z",
       "length": 2,
-      "sessionTypeId": "3",
+      "sessionTypeId": 3,
       "id": 16
     },
     {
@@ -409,13 +409,13 @@
     {
       "techniqueId": 1,
       "sessionId": 16,
-      "usedInSession": 1,
+      "usedInSession": 2,
       "id": 4
     },
     {
       "techniqueId": 2,
       "sessionId": 16,
-      "usedInSession": 3,
+      "usedInSession": 4,
       "id": 5
     },
     {

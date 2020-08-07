@@ -13,31 +13,57 @@ const SessionDetail = props => {
 
 
     
-
+ 
     const getSession = () => {
         ApiManager.getAllSessionData(props.sessionId)
             .then(result => {
-                Promise.all([setSession(result),                
-                    setType(result.sessionType.type),
-                    setDate(props.formatDates(result.date)),
-                    setTechData(getTH(result.techniqueHit))
-                ])
+                    setSession(result)                
+                    setType(result.sessionType.type)
+                    setDate(props.formatDates(result.date))
+                    ApiManager.getAll('techniques')
+                        .then(techResults => {
+                            getFullTechDetails(result.techniqueHit, techResults)
+                        })
+                    
+                
                 
             })
     }
 
-    const getTH = (techDataArr) => {
-        let techArr = []
-        techDataArr.forEach(dataObj => {
-            ApiManager.getExpanded('techniqueHit', dataObj.id, 'technique')
-                .then(result => {
-                    techArr.push(result)               
-                })
-             
-        })
-        return techArr  
-    }
+   
     
+    //gets techniqueHit objects with an expanded technique session
+    const getFullTechDetails = (dataArr, techArr) => {
+        let techIds = []
+        let hitIds = []
+        let sessionTechs = []
+        let sessionTechDetails = []
+        //skim ids from session array
+        dataArr.forEach(obj => {
+            techIds.push(obj.techniqueId)
+            hitIds.push(obj.id)
+        })
+        //skims technique list for technique ids used
+        techArr.forEach(tech => {
+            let flag
+            flag = techIds.includes(tech.id)
+            if (flag) {
+                sessionTechs.push(tech)
+            }
+        })
+        //creates deep object with nested technique attributes
+        dataArr.forEach(dataObj => {
+            let tacoObj = dataObj
+            sessionTechs.forEach(tech => {
+                if (dataObj.techniqueId === tech.id) {
+                    tacoObj.technique = tech
+                }
+            })
+            sessionTechDetails.push(tacoObj)
+        })
+        setTechData(sessionTechDetails)
+        
+    }
 
     const handleDelete = () => {
         ApiManager.deleteObject('sessions', props.sessionId)
@@ -88,14 +114,13 @@ const SessionDetail = props => {
                         <div>
                             You spent the session {type}.
                         </div>
-                        <Card body className="session__detail--technique">
+                        <Card className="session__detail--technique">
                             <Card.Header>Techniques Hit in Session:</Card.Header>
                             <Card.Body>
                                 { isLoading ? '' :
                                 techData.map(tech =>
-                                    <div key={tech.techniqueId}>
-                                    <div>{tech.technique.name}</div>
-                                    <div>{tech.usedInSession}</div>
+                                    <div key={tech.id}>
+                                        <div>{tech.technique.name}: {tech.usedInSession}</div>
                                     </div>
                                 )}
                             </Card.Body>
