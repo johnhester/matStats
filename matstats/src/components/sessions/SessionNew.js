@@ -13,9 +13,7 @@ const SessionNew = props => {
 
   
 
-    const addDataSlot = () => {
-        setSecondaryData([...secondaryData, {...blankData}])
-    }
+    
 
     const handleFieldChange = (event) => {
         const stateToChange = {...newSession}
@@ -97,7 +95,8 @@ const SessionNew = props => {
                     constructNewSession={constructNewSession}
                     handleSecondaryFieldChange={handleSecondaryFieldChange}
                     secondaryData={secondaryData}
-                    addDataSlot={addDataSlot}
+                    setSecondaryData={setSecondaryData}
+                    blankData={blankData}
                     {...props}
                     comeBack='sessions'
                     taco='new'

@@ -8,10 +8,7 @@ const SessionEdit = props => {
     const [session, setSession] = useState({userId:"", notes:"", date:"", length:"", sessionTypeId:"", id:"", techniqueHit:[]})
     const [isLoading, setIsLoading] = useState(false)
     const [techDetails, setTechDetails] = useState([])
-    const blankData = {id:'', usedInSession:'', techniqueId:''}
-    const [techData, setTechData] = useState([{...blankData}])
 
-    let count = 0
 
     // makes the initial call for session and techniques
     const initializeEdit = () => {
@@ -33,18 +30,15 @@ const SessionEdit = props => {
         setSession(stateToChange)
     }
 
-    //creates objects for the dynamic input
-    const addEditSlot = () => {
-        setTechData([...techData, {...blankData}])
-    }
-
+   
     // handles dynamic input 
     const handleDynamicFieldChange = (event, idx) => {
-        const updatedData = [...techData]
+        const updatedData = [...techDetails]
         updatedData[idx]['usedInSession'] = parseInt(event.target.value)
-        updatedData[idx]['id'] = event.target.id.slice(11)
-        updatedData[idx]['techniqueId'] = event.target.name.slice(13)
-        setTechData(updatedData)
+        //modifies total hit counter on technique
+
+
+        setTechDetails(updatedData)
     }
 
     // constructs a new session object for the edit 
@@ -67,15 +61,15 @@ const SessionEdit = props => {
     }
 
     const updateTechniqueHit = (sessionId) => {
-        techData.forEach(dataObj => {
-            if (isNaN(dataObj.usedInSession)) {
+        techDetails.forEach(tech => {
+            if (isNaN(tech.usedInSession)) {
                 alert('Please only update technique counts with numbers')
             } else {
                 let obj = {
-                    techniqueId: parseInt(dataObj.techniqueId),
+                    techniqueId: parseInt(tech.techniqueId),
                     sessionId: parseInt(sessionId),
-                    usedInSession: dataObj.usedInSession,
-                    id: dataObj.id
+                    usedInSession: tech.usedInSession,
+                    id: tech.id
                 }
                 ApiManager.editObject('techniqueHit', obj)
                     .then(() => props.history.push(`/sessions/${props.match.params.sessionId}`))
@@ -92,11 +86,8 @@ const SessionEdit = props => {
         let sessionTechDetails = []
         //skim ids from session array
         dataArr.forEach(obj => {
-            console.log('before edit slot', techData)
-            count++
             techIds.push(obj.techniqueId)
             hitIds.push(obj.id)
-            console.log('after edit slot', techData)
         })
         //skims technique list for technique ids used
         techArr.forEach(tech => {
@@ -124,9 +115,6 @@ const SessionEdit = props => {
         initializeEdit()
     }, [props.match.params.sessionId]) 
 
-    useEffect(() => {
-        addEditSlot()
-    },[count])
 
     return (
         <>
@@ -134,11 +122,6 @@ const SessionEdit = props => {
                 <Jumbotron>
                     <h3>Edit Session information</h3>
                 </Jumbotron>
-                <button
-                    onClick={addEditSlot}
-                >
-                    generate box
-                </button>
                 { isLoading ? 'Loading Form'
                 :
                 <SessionForm 

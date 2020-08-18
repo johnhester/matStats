@@ -77,7 +77,7 @@ const SessionDetail = props => {
                     console.log('obj', obj)
                     ApiManager.deleteObject('techniqueHit', obj.id)
                 })
-            })
+            }) 
     }
 
     const removeTechniquesHit = (dataObj) => {

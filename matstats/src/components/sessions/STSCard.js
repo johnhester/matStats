@@ -9,16 +9,15 @@ const STSCard = props => {
     return(
         <>                
         <Card className="STS__Card">                         
-            <p>{props.tech.name}</p>
+            <Card.Header>{props.tech.name}</Card.Header>
             <Form.Group className="STS__Card--inputBox">
-                <Form.Label>Successful uses: </Form.Label>
                 <Form.Control
                     className="STS__Card--input"
                     data-idx={props.idx}
                     id={props.tech.id}
                     name='totalHit'
                     onChange={event => props.handleSecondaryFieldChange(event, props.idx)}
-                    
+                    placeholder='Number of successful uses'
                 />  
             </Form.Group>
    

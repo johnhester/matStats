@@ -18,7 +18,7 @@ const SessionHome = props => {
     const sortSessions = (array) => {
         return array.sort((session1, session2) => new Date(session2.date) - new Date(session1.date))        
     }
-
+ 
 
     useEffect(() => {
         getSortSetSessions()

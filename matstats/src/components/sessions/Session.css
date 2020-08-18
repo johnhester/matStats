@@ -55,9 +55,7 @@
 
 .STS__Card {
     display: flex;
-    flex-flow: row nowrap;
-    align-items: baseline;
-    justify-content: space-evenly;
+    flex-flow: column nowrap;
     margin: .2rem;
     width: 80%;
 }

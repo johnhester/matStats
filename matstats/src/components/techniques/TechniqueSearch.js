@@ -47,7 +47,7 @@ const TechniqueSearch = props => {
             }
         })
 
-        return filtered
+        setSearchResults(filtered)
     }
 
 
@@ -87,7 +87,15 @@ const TechniqueSearch = props => {
                     ApiManager.addObject('techniqueHistory', newRelationship)
                         
                 }
-            }).then(props.getAndSetPriorityTechs())
+            }).then(() => {
+                filterExistingPriorities(
+                    techniques.filter(tech =>
+                        tech.name.toLowerCase().includes(search.toLowerCase())    
+                    )
+                )
+                props.getAndSetPriorityTechs()
+
+            })
 
 
 
@@ -101,12 +109,17 @@ const TechniqueSearch = props => {
     }, [])
 
     useEffect(() => {
-        setSearchResults(filterExistingPriorities(
+        filterExistingPriorities(
             techniques.filter(tech =>
                 tech.name.toLowerCase().includes(search.toLowerCase())    
             )
-        ))
+        )
     },[search])
+
+    useEffect(() => {
+        props.getAndSetPriorityTechs()
+        
+    }, [])
 
 
     return (

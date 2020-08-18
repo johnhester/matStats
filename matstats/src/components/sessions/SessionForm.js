@@ -14,12 +14,18 @@ const SessionForm = props => {
         ApiManager.getAll('sessionTypes')
             .then(result => setTypes(result))
     }
-
+    //adds data slot for dynamic form
+    const addDataSlot = () => {
+        console.log('secondary', props.secondaryData)
+        props.setSecondaryData([...props.secondaryData, {...props.blankData}])
+    }
     
 
     useEffect(() => {
         getSessionTypes()
     }, [])
+
+    
 
     return (
         <>
@@ -76,7 +82,6 @@ const SessionForm = props => {
                                 <Form.Control 
                                     id={`techHitId--${tech.id}`}
                                     name={`techniqueId--${tech.techniqueId}`}
-                                    // className={tech.techniqueId}
                                     defaultValue={tech.usedInSession}
                                     onChange={event => props.handleDynamicFieldChange(event, idx)}
                                 />
@@ -87,11 +92,12 @@ const SessionForm = props => {
                             techniques={props.techniques}
                             handleSecondaryFieldChange={props.handleSecondaryFieldChange}
                             secondaryData={props.secondaryData}
-                            addDataSlot={props.addDataSlot}
+                            addDataSlot={addDataSlot}
                             taco={props.taco}
                             {...props}
-                          />
+                    />
                     }
+                    
                     <Form.Group>
                         <Form.Label>Notes</Form.Label>
                         <Form.Control
@@ -108,7 +114,7 @@ const SessionForm = props => {
                             type="submit"
                             disabled={props.loading}
                         > 
-                            {props.taco === 'edit' ? 'edit' : 'Save'} 
+                            {props.taco === 'edit' ? 'Edit' : 'Save'} 
                         </Button>
                         <Button
                             onClick={() => {props.history.push(props.comeBack)}}
