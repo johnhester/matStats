@@ -43,7 +43,11 @@ const TechniqueHome = props => {
                         />                       
                     )}
                 <div>
-                    <TechniqueSearch {...props}/>
+                    <TechniqueSearch 
+                        priorityTechs={favorites}
+                        getAndSetPriorityTechs={getAndSetPriorityTechs}
+                        {...props}
+                    />
                 </div>
                 <div className="techniqueHome__buttons">
                     <Button

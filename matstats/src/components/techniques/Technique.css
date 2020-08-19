@@ -52,3 +52,8 @@
 .technique__detail--containerItem {
     margin: 1rem;
 }
+
+.search__card {
+    padding: 0rem;
+    margin: .2rem .5rem;
+}

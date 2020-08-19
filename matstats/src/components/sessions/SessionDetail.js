@@ -5,26 +5,88 @@ import { Card } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button'
 
 const SessionDetail = props => {
-    const [session, setSession] = useState({userId:"", notes:"", date:"", length:"", sessionTypeId:"", id:""})
+    const [session, setSession] = useState({userId:"", notes:"", date:"", length:"", sessionTypeId:"", id:"", techniqueHit: []})
     const [date, setDate] = useState()
     const [type, setType] = useState()
+    const [techData, setTechData] = useState([])
     const [isLoading, setIsLoading] = useState(true)
 
 
-
+    
+ 
     const getSession = () => {
-        ApiManager.getExpanded('sessions', props.sessionId, 'sessionType')
+        ApiManager.getAllSessionData(props.sessionId)
             .then(result => {
-                setSession(result)
-                setType(result.sessionType.type)
-                setDate(props.formatDates(result.date))
+                    setSession(result)                
+                    setType(result.sessionType.type)
+                    setDate(props.formatDates(result.date))
+                    ApiManager.getAll('techniques')
+                        .then(techResults => {
+                            getFullTechDetails(result.techniqueHit, techResults)
+                        })
+                    
+                
+                
             })
     }
+
+   
     
+    //gets techniqueHit objects with an expanded technique session
+    const getFullTechDetails = (dataArr, techArr) => {
+        let techIds = []
+        let hitIds = []
+        let sessionTechs = []
+        let sessionTechDetails = []
+        //skim ids from session array
+        dataArr.forEach(obj => {
+            techIds.push(obj.techniqueId)
+            hitIds.push(obj.id)
+        })
+        //skims technique list for technique ids used
+        techArr.forEach(tech => {
+            let flag
+            flag = techIds.includes(tech.id)
+            if (flag) {
+                sessionTechs.push(tech)
+            }
+        })
+        //creates deep object with nested technique attributes
+        dataArr.forEach(dataObj => {
+            let tacoObj = dataObj
+            sessionTechs.forEach(tech => {
+                if (dataObj.techniqueId === tech.id) {
+                    tacoObj.technique = tech
+                }
+            })
+            sessionTechDetails.push(tacoObj)
+        })
+        setTechData(sessionTechDetails)
+        
+    }
 
     const handleDelete = () => {
         ApiManager.deleteObject('sessions', props.sessionId)
             .then(props.history.push('/sessions'))
+            .then(() => {
+                techData.forEach(dataObj => 
+                    removeTechniquesHit(dataObj)
+                )
+            }).then(() => {
+                techData.forEach(obj => {
+                    console.log('obj', obj)
+                    ApiManager.deleteObject('techniqueHit', obj.id)
+                })
+            }) 
+    }
+
+    const removeTechniquesHit = (dataObj) => {
+        ApiManager.getEmbedded('techniques', dataObj.technique.id,'')
+            .then(techObj => {
+                techObj.totalHit -= dataObj.usedInSession
+                ApiManager.editObject('techniques', techObj)
+            })
+        
     }
 
     useEffect(() => {
@@ -33,8 +95,9 @@ const SessionDetail = props => {
     }, [props.sessionId])
 
     return(
-        <>
-            <div className="Form__container">
+        <> { isLoading ? <p>Page will load shortly</p>
+                :
+                <div className="Form__container">
                 <Card>
                     <Card.Header>
                         Here are your session details:
@@ -50,8 +113,16 @@ const SessionDetail = props => {
                         <div>
                             You spent the session {type}.
                         </div>
-                        <Card body className="session__detail--technique">
-                            Technique placeholder
+                        <Card className="session__detail--technique">
+                            <Card.Header>Techniques Hit in Session:</Card.Header>
+                            <Card.Body>
+                                { isLoading ? '' :
+                                techData.map(tech =>
+                                    <div key={tech.id}>
+                                        <div>{tech.technique.name}: {tech.usedInSession}</div>
+                                    </div>
+                                )}
+                            </Card.Body>
                         </Card>
                         <div>
                             {session.notes}
@@ -78,6 +149,8 @@ const SessionDetail = props => {
                         </Button>
                     </div>
             </div>
+            }
+            
         </>
     )
 }

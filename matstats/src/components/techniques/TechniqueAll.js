@@ -11,7 +11,6 @@ const TechniqueAll = props => {
     const getAndSetAllTechs = () => {
         ApiManager.getEmbedded('techniques', '', 'techniqueHistory')
         .then(priorityResults => {
-            console.log('embedded history', priorityResults)
             setAllTechs(priorityResults)
         })
     }
@@ -31,7 +30,6 @@ const TechniqueAll = props => {
 
     const establishRelationship = (tech) => {
         let relationship = {}
-
        
             tech.techniqueHistory.find(obj =>
                 obj.userId === parseInt(sessionStorage.credentials) ? relationship = obj : ''

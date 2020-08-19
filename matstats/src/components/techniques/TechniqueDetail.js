@@ -36,7 +36,7 @@ const TechniqueDetail = props => {
     const handlePriorityChange = (event) => {
 
         const editRelationship = {
-            "techniqueId": relationship.techniqueId,
+            "techniqueId": technique.id,
             "userId": parseInt(sessionStorage.credentials),
             "priority": relationship.priority,
             "id": relationship.id
@@ -53,7 +53,16 @@ const TechniqueDetail = props => {
             .then(props.history.push('/techniques'))
     }
 
+    const createRelationship = (event) => {
+        const newRelationship = {
+            techniqueId: technique.id,
+            userId: parseInt(sessionStorage.credentials),
+            priority: true
+        }
 
+        ApiManager.addObject('techniqueHistory', newRelationship)
+            .then(() => getTechnique() )
+    }
 
     useEffect(() => {
         getTechnique()
@@ -72,24 +81,36 @@ const TechniqueDetail = props => {
                         </div>
                         <div className="technique__detail--containerItem">
                             Priority?
-                            <Form.Check
-                                className="technique__detail--checkbox"
-                                id={relationship.id}
-                                onChange={handlePriorityChange}
-                                checked={relationship.priority}
-                            />
+                            { relationship === undefined ?
+                                <Form.Check
+                                    className="technique__detail--checkbox"
+                                    id={0}
+                                    onChange={createRelationship}
+                                    checked={false}
+                                />
+                                :   <Form.Check
+                                        className="technique__detail--checkbox"
+                                        id={relationship.id}
+                                        onChange={handlePriorityChange}
+                                        checked={relationship.priority}
+                                    />
+
+                            }
+                            
                         </div>
                     </Card.Body>
                 </Card>
                 <div className="technique__detail--buttonBox">
-                    <Button 
-                        id={relationship.id}
-                        className="technique__detail--button"
-                        type="submit"
-                        onClick={handleDelete}
-                    >
-                        Delete History
-                    </Button>
+                    { relationship === undefined ? ''
+                        :   <Button 
+                                id={relationship.id}
+                                className="technique__detail--button"
+                                type="submit"
+                                onClick={handleDelete}
+                            >
+                                Delete History
+                            </Button>
+                    }
                     <Button 
                         className="technique__detail--button"
                         type="submit"

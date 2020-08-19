@@ -2,24 +2,34 @@ import React, {useEffect, useState} from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import ApiManager from '../../modules/ApiManager'
+import SessionTechSearch from './SessionTechSearch'
 
 
 const SessionForm = props => {
 
     const [types, setTypes] = useState([])
+     
 
     const getSessionTypes = () => {
         ApiManager.getAll('sessionTypes')
             .then(result => setTypes(result))
     }
+    //adds data slot for dynamic form
+    const addDataSlot = () => {
+        console.log('secondary', props.secondaryData)
+        props.setSecondaryData([...props.secondaryData, {...props.blankData}])
+    }
+    
 
     useEffect(() => {
         getSessionTypes()
-    },[])
+    }, [])
+
+    
 
     return (
         <>
-            <Form onSubmit={props.action === 'edit' ? props.updateSession : props.constructNewSession}>
+            <Form onSubmit={props.taco === 'edit' ? props.updateSession : props.constructNewSession}>
                     <Form.Group className="session__form--date">                        
                         <Form.Label>Date  </Form.Label>
                         <input 
@@ -27,7 +37,7 @@ const SessionForm = props => {
                             required
                             onChange={props.handleFieldChange}
                             id='date'
-                            value={props.action === 'edit' ? props.session.date.slice(0,10) : null}
+                            value={props.taco === 'edit' ? props.session.date.slice(0,10) : undefined}
                         />                        
                     </Form.Group>
                     <Form.Group>
@@ -37,7 +47,7 @@ const SessionForm = props => {
                             onChange={props.handleFieldChange}
                             id='length'
                             placeholder='in hours'
-                            value={props.action === 'edit' ? props.session.length : null}
+                            value={props.taco === 'edit' ? props.session.length : undefined}
                         />
                     </Form.Group>
                     <Form.Group>
@@ -47,7 +57,7 @@ const SessionForm = props => {
                             id="sessionTypeId"
                             onChange={props.handleFieldChange}
                             required
-                            value={props.action === 'edit' ? props.session.sessionTypeId : null}
+                            value={props.taco === 'edit' ? props.session.sessionTypeId : undefined}
                         >
                             <option value="0">pick one</option>
                             {types.map(type => 
@@ -60,12 +70,34 @@ const SessionForm = props => {
                             )}
                         </Form.Control>
                     </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Techniques Used/Trained</Form.Label>
-                        <Form.Control 
-                            type="input"
-                        />
-                    </Form.Group>
+                    
+                    {props.taco === 'edit' ?
+                        <>                        
+                            <Form.Label>Techniques hit in this session:</Form.Label>
+                            {props.techsHit.map((tech, idx) =>
+                            <Form.Group key={tech.id}>                                
+                                <Form.Label>
+                                    {tech.technique.name} 
+                                </Form.Label>
+                                <Form.Control 
+                                    id={`techHitId--${tech.id}`}
+                                    name={`techniqueId--${tech.techniqueId}`}
+                                    defaultValue={tech.usedInSession}
+                                    onChange={event => props.handleDynamicFieldChange(event, idx)}
+                                />
+                            </Form.Group>
+                            )}
+                       </>
+                        : <SessionTechSearch 
+                            techniques={props.techniques}
+                            handleSecondaryFieldChange={props.handleSecondaryFieldChange}
+                            secondaryData={props.secondaryData}
+                            addDataSlot={addDataSlot}
+                            taco={props.taco}
+                            {...props}
+                    />
+                    }
+                    
                     <Form.Group>
                         <Form.Label>Notes</Form.Label>
                         <Form.Control
@@ -74,7 +106,7 @@ const SessionForm = props => {
                             placeholder='How did it go?'
                             onChange={props.handleFieldChange}
                             required
-                            value={props.action === 'edit' ? props.session.notes : null}
+                            value={props.taco === 'edit' ? props.session.notes : undefined}
                         />
                     </Form.Group>
                     <Form.Group className="session__form--buttons">
@@ -82,7 +114,7 @@ const SessionForm = props => {
                             type="submit"
                             disabled={props.loading}
                         > 
-                            {props.action === 'edit' ? 'Edit' : 'Save'} 
+                            {props.taco === 'edit' ? 'Edit' : 'Save'} 
                         </Button>
                         <Button
                             onClick={() => {props.history.push(props.comeBack)}}
